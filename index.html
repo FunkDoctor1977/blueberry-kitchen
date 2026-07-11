@@ -1271,14 +1271,15 @@ function setNav(active) {
 /* ---------- Onboarding ---------- */
 function renderOnboarding() {
   setNav(null);
+  const isSettings = state.onboarded;
   show(`
     <div class="onboard">
       <div class="mascot">👩‍🍳</div>
-      <h1>Welcome to Blueberry Kitchen! 🫐</h1>
-      <p class="sub">Cook real recipes, earn XP, collect badges and build your very own digital cookbook.</p>
+      <h1>${isSettings ? "My chef settings ⚙️" : "Welcome to Blueberry Kitchen! 🫐"}</h1>
+      <p class="sub">${isSettings ? "Change your name or what you eat - your XP, badges and cookbook all stay exactly as they are." : "Cook real recipes, earn XP, collect badges and build your very own digital cookbook."}</p>
       <div class="card">
         <h2>What's your chef name?</h2>
-        <input type="text" id="name-input" placeholder="Type your chef name" maxlength="20" value="${state.onboarded ? esc(state.name) : ""}" />
+        <input type="text" id="name-input" placeholder="Type your chef name" maxlength="20" value="${isSettings ? esc(state.name) : ""}" />
         <h2>What do you eat?</h2>
         <p class="sub">Pick everything that's true for you - we'll only show recipes that fit.</p>
         <div class="chip-row" id="diet-chips">
@@ -1288,7 +1289,7 @@ function renderOnboarding() {
           <button class="chip" data-diet="halal">☪️ Halal</button>
           <button class="chip" data-diet="kosher">✡️ Kosher</button>
         </div>
-        <button class="btn btn-primary btn-big" id="start-btn">Let's get cooking! 🍳</button>
+        <button class="btn btn-primary btn-big" id="start-btn">${isSettings ? "Save my choices ✅" : "Let's get cooking! 🍳"}</button>
       </div>
     </div>
   `);
@@ -1314,7 +1315,7 @@ function renderOnboarding() {
     state.onboarded = true;
     saveState();
     renderHome();
-    toast(`Welcome, Chef ${state.name}! 👋`);
+    toast(isSettings ? `All saved, Chef ${state.name}! ✅` : `Welcome, Chef ${state.name}! 👋`);
   });
 }
 
@@ -1385,7 +1386,14 @@ function renderRecipeGrid() {
       </button>`;
 
   if (!results.length) {
-    grid.innerHTML = `<div class="empty-state card" style="grid-column:1/-1"><span class="big-emoji">🕵️</span>No recipes found - try a different word, like "cake" or "drinks"!</div>` + builderCard;
+    const reason = q
+      ? `No recipes found for "${esc(q)}" - try a different word, like "cake" or "drinks"!`
+      : `No ${activeCategory === "All" ? "" : esc(activeCategory) + " "}recipes match what you eat just now - try another shelf!`;
+    grid.innerHTML = `<div class="empty-state card" style="grid-column:1/-1">
+        <span class="big-emoji">🕵️</span>${reason}
+        <br/><br/>
+        <button class="btn btn-secondary" id="empty-settings">⚙️ Change what I eat</button>
+      </div>` + builderCard;
   } else {
     grid.innerHTML = results
       .map((r) => {
@@ -1407,6 +1415,8 @@ function renderRecipeGrid() {
     card.addEventListener("click", () => renderRecipe(card.dataset.id))
   );
   document.getElementById("new-recipe-card").addEventListener("click", renderRecipeBuilder);
+  const emptySettings = document.getElementById("empty-settings");
+  if (emptySettings) emptySettings.addEventListener("click", renderOnboarding);
 }
 
 /* ---------- My Own Recipes builder ---------- */
@@ -2077,6 +2087,7 @@ function renderBadges() {
         <div class="xp-label">${state.xp} XP${next ? ` · ${next.xp - state.xp} XP to ${esc(next.name)} ${next.emoji}` : " · Top rank! 🎉"}</div>
       </div>
     </div>
+    <div style="text-align:center; margin-bottom:14px"><button class="btn btn-ghost" id="edit-profile">⚙️ Change my chef name or what I eat</button></div>
     <h2>Badges (${state.badges.length}/${BADGES.length})</h2>
     <div class="badge-grid">
       ${BADGES.map(
@@ -2102,6 +2113,7 @@ function renderBadges() {
     </div>` : ""}
   `);
   wireResumeBanner();
+  document.getElementById("edit-profile").addEventListener("click", renderOnboarding);
   const grownUps = document.getElementById("grown-ups");
   if (grownUps) grownUps.addEventListener("click", renderGrownUps);
 }
