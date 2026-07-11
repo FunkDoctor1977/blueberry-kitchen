@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueberry Kitchen 🫐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+/* Rahmah's Kitchen - warm, playful, big-buttoned, tablet-first */
+:root {
+  --cream: #fff6ec;
+  --card: #ffffff;
+  --ink: #4a3728;
+  --ink-soft: #6f5a48;
+  --straw: #ff6f61;
+  --straw-dark: #e85a4f;
+  --peach: #ffd9b3;
+  --mint: #9fd8c9;
+  --mint-dark: #2e8b74;
+  --sun: #ffc94d;
+  --lilac: #c7b9ff;
+  --radius: 22px;
+  --shadow: 0 6px 0 rgba(74, 55, 40, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: "Baloo 2", "Comic Sans MS", "Segoe UI", sans-serif;
+  background: var(--cream);
+  background-image: radial-gradient(#ffe8d1 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- Top bar ---------- */
+#topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--card);
+  border-bottom: 4px solid var(--peach);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand { font-size: 1.5rem; font-weight: 800; color: var(--straw); }
+nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 18px;
+  min-height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: var(--peach);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.nav-btn:active { transform: translateY(3px); box-shadow: none; }
+.nav-btn.active { background: var(--straw); color: white; }
+
+/* ---------- Layout ---------- */
+#view { max-width: 900px; margin: 0 auto; padding: 20px 16px 80px; }
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+h1 { font-size: 1.9rem; font-weight: 800; margin-bottom: 8px; }
+h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+p.sub { color: var(--ink-soft); margin-bottom: 14px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.05s;
+}
+.btn:active { transform: translateY(3px); box-shadow: none; }
+.btn-primary { background: var(--straw); color: white; }
+.btn-primary:hover { background: var(--straw-dark); }
+.btn-secondary { background: var(--mint); color: var(--ink); }
+.btn-ghost { background: transparent; box-shadow: none; color: var(--ink-soft); font-size: 0.95rem; }
+.btn-big { width: 100%; font-size: 1.3rem; padding: 18px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ---------- Onboarding ---------- */
+.onboard { text-align: center; padding-top: 30px; }
+.onboard .mascot { font-size: 4.5rem; }
+.onboard input[type="text"] {
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 14px;
+  width: min(320px, 90%);
+  border: 3px solid var(--peach);
+  border-radius: var(--radius);
+  margin: 14px 0;
+  color: var(--ink);
+  background: var(--card);
+}
+.chip-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 14px 0 22px; }
+.chip {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 12px 20px;
+  border: 3px solid var(--peach);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.chip.selected { background: var(--mint); border-color: var(--mint-dark); }
+
+/* ---------- Home ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #fff1e0, #ffe3ee);
+}
+.hero .avatar { font-size: 3.4rem; }
+.rank-name { font-weight: 800; font-size: 1.2rem; color: var(--straw-dark); }
+.xp-bar { background: #f2e4d4; border-radius: 999px; height: 16px; overflow: hidden; margin-top: 6px; }
+.xp-fill { background: linear-gradient(90deg, var(--sun), var(--straw)); height: 100%; border-radius: 999px; transition: width 0.6s; }
+.xp-label { font-size: 0.9rem; color: var(--ink-soft); margin-top: 4px; }
+
+.searchbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.searchbar input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 18px;
+  border: 3px solid var(--peach);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+}
+.searchbar input:focus { outline: 3px solid var(--sun); }
+
+.cat-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.cat {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 18px;
+  min-height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-soft);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.cat.active { background: var(--sun); color: var(--ink); }
+
+.recipe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.recipe-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  border: 3px solid transparent;
+  text-align: left;
+  font-family: inherit;
+  color: var(--ink);
+}
+.recipe-card:hover { border-color: var(--sun); }
+.recipe-card .big-emoji { font-size: 2.6rem; }
+.recipe-card h3 { font-size: 1.15rem; font-weight: 800; margin: 6px 0 4px; }
+.meta { font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; }
+.stars-mini { color: var(--sun); font-size: 0.95rem; }
+.done-tick { color: var(--mint-dark); font-weight: 800; font-size: 0.85rem; }
+
+/* ---------- Recipe detail ---------- */
+.detail-head { display: flex; align-items: center; gap: 14px; }
+.detail-head .big-emoji { font-size: 3.6rem; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.pill {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--peach);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.pill.diet { background: #e2f4ee; color: var(--mint-dark); }
+ul.ingredients { list-style: none; margin: 8px 0; }
+ul.ingredients li { padding: 8px 0 8px 30px; position: relative; border-bottom: 2px dashed #f4e6d6; font-weight: 600; }
+ul.ingredients li::before { content: "🛒"; position: absolute; left: 0; }
+
+/* ---------- Cooking mode ---------- */
+.cook-progress { display: flex; gap: 6px; margin-bottom: 16px; }
+.cook-progress .dot { flex: 1; height: 10px; border-radius: 999px; background: #f2e4d4; }
+.cook-progress .dot.done { background: var(--mint); }
+.cook-progress .dot.now { background: var(--straw); }
+
+.step-card { text-align: center; padding: 30px 22px; }
+.step-num { font-weight: 800; color: var(--ink-soft); letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem; }
+.step-text { font-size: 1.45rem; font-weight: 700; line-height: 1.45; margin: 14px 0 20px; }
+
+.safety-banner {
+  background: #fff1c9;
+  border: 3px dashed var(--sun);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-weight: 800;
+  color: #8a6400;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+/* ---------- Timer & challenges ---------- */
+.timer-display { font-size: 3.4rem; font-weight: 800; color: var(--straw); letter-spacing: 2px; }
+.timer-sub { color: var(--ink-soft); font-weight: 700; margin-bottom: 10px; }
+.challenge-card { background: #f3efff; border: 3px solid var(--lilac); }
+.challenge-q { font-size: 1.25rem; font-weight: 800; margin-bottom: 14px; }
+.answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.answer-btn {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 14px;
+  border: 3px solid var(--lilac);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.answer-btn.correct { background: var(--mint); border-color: var(--mint-dark); }
+.answer-btn.wrong { background: #ffd6d1; border-color: var(--straw); }
+.science-card { background: #e8f6ff; border: 3px solid #9ed3f0; }
+.science-card h3 { margin-bottom: 8px; }
+.science-card p { font-size: 1.1rem; font-weight: 600; line-height: 1.5; }
+
+/* ---------- Finish / photo / review ---------- */
+.finish { text-align: center; }
+.confetti { font-size: 2.6rem; letter-spacing: 6px; }
+.photo-preview {
+  max-width: 100%;
+  max-height: 340px;
+  border-radius: var(--radius);
+  border: 5px solid var(--card);
+  box-shadow: var(--shadow);
+  margin: 14px auto;
+  display: block;
+}
+input[type="file"] { display: none; }
+.stars-big { font-size: 2.4rem; letter-spacing: 4px; }
+.review-list { text-align: left; margin: 14px auto; max-width: 520px; }
+.review-list .item { padding: 10px 14px; border-radius: 14px; margin-bottom: 8px; font-weight: 600; }
+.review-list .good { background: #e2f4ee; }
+.review-list .tip { background: #fff1c9; }
+.fun-comment { font-style: italic; font-weight: 700; color: var(--straw-dark); margin-top: 10px; }
+.sticker-reveal { font-size: 4.5rem; animation: pop 0.5s ease; }
+@keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.spinner {
+  display: inline-block;
+  font-size: 2.6rem;
+  animation: spin 1.4s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Cookbook ---------- */
+.cookbook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.book-entry {
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+}
+.book-entry:hover { outline: 3px solid var(--sun); }
+.book-entry img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.book-entry .body { padding: 12px 14px; }
+.book-entry h3 { font-size: 1.05rem; font-weight: 800; }
+.book-entry .date { font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; }
+.empty-state { text-align: center; padding: 40px 20px; color: var(--ink-soft); font-weight: 700; }
+.empty-state .big-emoji { font-size: 3.4rem; display: block; margin-bottom: 10px; }
+
+/* ---------- Badges ---------- */
+.badge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.badge-tile { text-align: center; padding: 18px 10px; }
+.badge-tile .big-emoji { font-size: 2.6rem; filter: grayscale(1); opacity: 0.35; }
+.badge-tile.earned .big-emoji { filter: none; opacity: 1; }
+.badge-tile h4 { font-size: 0.95rem; font-weight: 800; margin-top: 6px; }
+.badge-tile p { font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; }
+.badge-tile.earned { border: 3px solid var(--sun); }
+
+/* ---------- My Own Recipes ---------- */
+.builder-cta {
+  border: 3px dashed var(--straw);
+  background: #fff1e0;
+  text-align: center;
+}
+.builder-cta h3 { color: var(--straw-dark); }
+.my-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: #f3efff;
+  color: #6b5bb5;
+  border: 2px solid var(--lilac);
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin: 4px 0;
+}
+.builder h2 { margin-top: 14px; }
+.builder input[type="text"],
+.builder input[type="number"] {
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px 16px;
+  border: 3px solid var(--peach);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  width: 100%;
+  margin-bottom: 6px;
+}
+.builder input:focus { outline: 3px solid var(--sun); }
+.builder-chips { justify-content: flex-start; margin: 8px 0 6px; }
+.emoji-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 6px; }
+.emoji-btn {
+  font-family: inherit;
+  font-size: 1.7rem;
+  padding: 8px 12px;
+  border: 3px solid var(--peach);
+  border-radius: var(--radius);
+  background: var(--card);
+  cursor: pointer;
+}
+.emoji-btn.selected { background: var(--mint); border-color: var(--mint-dark); }
+.builder-add-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px; }
+.builder .builder-add-row input { flex: 1; min-width: 180px; width: auto; margin-bottom: 0; }
+.builder-toggle { display: block; font-weight: 700; font-size: 1.05rem; margin: 12px 0; }
+.builder-toggle input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--straw); vertical-align: middle; margin-right: 6px; }
+.builder .builder-toggle input[type="number"] { width: 90px; margin: 0 4px; padding: 8px 12px; }
+.remove-btn {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 999px;
+  background: #ffd6d1;
+  color: var(--straw-dark);
+  padding: 4px 10px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+ol.builder-steps { list-style: none; margin: 8px 0; counter-reset: step; }
+ol.builder-steps li { padding: 8px 0 8px 34px; position: relative; border-bottom: 2px dashed #f4e6d6; font-weight: 600; counter-increment: step; }
+ol.builder-steps li::before { content: counter(step) "."; position: absolute; left: 0; font-weight: 800; color: var(--straw); }
+li.builder-empty { color: var(--ink-soft); }
+ul.ingredients li.builder-empty::before,
+ol.builder-steps li.builder-empty::before { content: "✨"; }
+
+/* ---------- Toast ---------- */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 14px 24px;
+  border-radius: 999px;
+  z-index: 100;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  animation: rise 0.3s ease;
+}
+@keyframes rise { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+/* ---------- Resume-cooking banner ---------- */
+.resume-banner {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: left;
+  background: var(--mint);
+  color: var(--ink);
+  border: 3px solid var(--mint-dark);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.resume-banner:active { transform: translateY(3px); box-shadow: none; }
+
+/* ---------- Grown-ups' corner ---------- */
+.key-input {
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 14px 16px;
+  border: 3px solid var(--peach);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  width: 100%;
+  margin-bottom: 14px;
+}
+.key-input:focus { outline: 3px solid var(--sun); }
+
+@media (max-width: 560px) {
+  .answer-grid { grid-template-columns: 1fr; }
+  .step-text { font-size: 1.25rem; }
+  .brand { font-size: 1.2rem; }
+}
+
+</style>
+</head>
+<body>
+  <header id="topbar" class="hidden">
+    <div class="brand" id="brand">🫐 Blueberry Kitchen</div>
+    <nav>
+      <button class="nav-btn" data-nav="home">🏠 Home</button>
+      <button class="nav-btn" data-nav="cookbook">📖 My Cookbook</button>
+      <button class="nav-btn" data-nav="badges">🏅 My Badges</button>
+    </nav>
+  </header>
+
+  <main id="view"></main>
+
+  <div id="toast" class="hidden"></div>
+
+  <script>window.RK_STANDALONE = true;
+// Recipe library for Rahmah's Kitchen
+// diet tags: veggie, vegan, halal, kosher (true = suitable)
+// steps: { text, safety: true (grab a grown-up), timer: minutes (starts challenge time) }
+const RECIPES = [
+  {
+    id: "fairy-cakes",
+    title: "Fairy Cakes",
+    emoji: "🧁",
+    category: "Bakes & Cakes",
+    time: "45 min",
+    difficulty: "Easy",
+    serves: "12 cakes",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "110g soft butter", "110g caster sugar", "110g self-raising flour",
+      "2 eggs", "1 tsp vanilla extract", "Icing sugar and sprinkles to decorate",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 180°C and put 12 paper cases in a cupcake tray.", safety: true },
+      { text: "Put the soft butter and sugar in a big bowl. Beat them with a wooden spoon until pale and fluffy - strong arms needed!" },
+      { text: "Crack the eggs into a cup one at a time, then beat them into the mixture with the vanilla." },
+      { text: "Sift in the flour and gently FOLD it in with a big spoon - like tucking the flour into bed, not whacking it!" },
+      { text: "Spoon the mixture into the paper cases until each one is about half full - try to make them all even!" },
+      { text: "Ask a grown-up to put the tray in the hot oven.", safety: true },
+      { text: "Bake for 15 minutes until golden. Time for some challenges while you wait!", timer: 15 },
+      { text: "Grown-up takes them out. Let them cool completely - patience, chef!", safety: true },
+      { text: "Mix icing sugar with a few drops of water, drizzle on top and add sprinkles. Ta-da!" },
+    ],
+    science: [
+      "Why do cakes rise? Self-raising flour has baking powder in it. In the hot oven it makes tiny bubbles of gas that puff the cake up like a balloon!",
+      "Beating butter and sugar traps tiny air pockets - that's what makes your cakes light and fluffy instead of heavy like a brick.",
+    ],
+    quiz: [
+      { q: "What makes fairy cakes rise in the oven?", options: ["Magic dust", "Tiny gas bubbles from baking powder", "The sprinkles", "Loud singing"], answer: 1 },
+      { q: "Why do we FOLD the flour in gently?", options: ["To keep the air bubbles in", "Because spoons are lazy", "To make it saltier", "To cool it down"], answer: 0 },
+      { q: "This recipe serves 12. If you need 24 cakes, what do you do to the ingredients?", options: ["Halve them", "Double them", "Keep them the same", "Triple them"], answer: 1 },
+    ],
+  },
+  {
+    id: "choc-chip-cookies",
+    title: "Chocolate Chip Cookies",
+    emoji: "🍪",
+    category: "Bakes & Cakes",
+    time: "35 min",
+    difficulty: "Easy",
+    serves: "10 cookies",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "125g soft butter", "100g light brown sugar", "1 egg",
+      "1 tsp vanilla extract", "180g plain flour", "100g chocolate chips",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 180°C and line a baking tray with baking paper.", safety: true },
+      { text: "Beat the butter and brown sugar together until creamy and smooth." },
+      { text: "Beat in the egg and vanilla until everything is mixed." },
+      { text: "Stir in the flour, then the chocolate chips. The dough will be thick - keep going!" },
+      { text: "Roll the dough into 10 balls and space them out on the tray. They spread out, so give them room to dance!" },
+      { text: "Grown-up puts the tray in the oven.", safety: true },
+      { text: "Bake for 12 minutes until golden at the edges. Challenge time!", timer: 12 },
+      { text: "Grown-up takes them out. They'll be soft - let them cool on the tray for 10 minutes to firm up.", safety: true },
+    ],
+    science: [
+      "Cookies spread because the butter melts in the oven and the dough relaxes outwards - like the cookie is doing a big stretch!",
+      "Brown sugar has treacle in it, which makes cookies chewy. White sugar makes them crispier. Bakers pick sugar like an artist picks paint!",
+    ],
+    quiz: [
+      { q: "Why do cookies spread out in the oven?", options: ["They're running away", "The butter melts", "The chocolate pushes them", "The tray is slippery"], answer: 1 },
+      { q: "Which sugar makes cookies CHEWY?", options: ["White sugar", "Brown sugar", "Icing sugar", "No sugar"], answer: 1 },
+      { q: "Why leave space between the dough balls?", options: ["So they can spread", "So they don't argue", "To save paper", "It looks tidy"], answer: 0 },
+    ],
+  },
+  {
+    id: "banana-pancakes",
+    title: "Banana Pancakes",
+    emoji: "🥞",
+    category: "Breakfast",
+    time: "20 min",
+    difficulty: "Easy",
+    serves: "2 people",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "1 ripe banana (the spottier the better!)", "1 egg", "4 tbsp self-raising flour",
+      "A splash of milk", "A little butter for the pan", "Honey or berries to serve",
+    ],
+    steps: [
+      { text: "Peel the banana, put it in a bowl and mash it with a fork until squishy and smooth." },
+      { text: "Crack in the egg and whisk it into the banana." },
+      { text: "Stir in the flour and a splash of milk until you have a thick, dolloping batter." },
+      { text: "Ask a grown-up to heat a little butter in a frying pan on medium heat.", safety: true },
+      { text: "With a grown-up, dollop small circles of batter into the pan.", safety: true },
+      { text: "Watch for little bubbles on top - that's the signal to flip! Grown-up flips them with a spatula.", safety: true },
+      { text: "Cook one more minute, then stack them up and top with honey or berries. Breakfast of champions!" },
+    ],
+    science: [
+      "Those bubbles on top are your pancake talking to you! Gas bubbles rise through the batter and pop at the surface when the bottom is cooked.",
+      "Spotty bananas are sweeter because the starch inside slowly turns into sugar as the banana ripens. Brown spots = nature's sweets!",
+    ],
+    quiz: [
+      { q: "When is a pancake ready to flip?", options: ["When it smells", "When bubbles appear on top", "After 1 hour", "When it flips itself"], answer: 1 },
+      { q: "Why are spotty bananas sweeter?", options: ["Starch turns to sugar as they ripen", "The spots are chocolate", "They're painted", "They're older so wiser"], answer: 0 },
+      { q: "This serves 2. For 6 people, how much of everything do you need?", options: ["The same", "2 times", "3 times", "10 times"], answer: 2 },
+    ],
+  },
+  {
+    id: "rainbow-smoothie",
+    title: "Rainbow Fruit Smoothie",
+    emoji: "🌈",
+    category: "Cold Drinks",
+    time: "10 min",
+    difficulty: "Super Easy",
+    serves: "2 glasses",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "1 banana", "A handful of frozen berries", "A handful of spinach (secret ingredient - you can't taste it!)",
+      "150ml orange juice", "3 tbsp coconut or soya yoghurt (optional)",
+    ],
+    steps: [
+      { text: "Peel the banana and break it into chunks." },
+      { text: "Put the banana, berries, spinach and orange juice into the blender jug." },
+      { text: "Ask a grown-up to help you put the lid on TIGHT and blend for 30 seconds.", safety: true },
+      { text: "Check it - too thick? Add a splash more juice and blend again." },
+      { text: "Pour into two glasses. Cheers! You just drank a rainbow." },
+    ],
+    science: [
+      "Blenders work like a mini tornado - the spinning blades pull everything down into a whirlpool called a vortex and chop it super fine.",
+      "Frozen berries make your smoothie thick and icy without watering it down like ice cubes would. Clever, right?",
+    ],
+    quiz: [
+      { q: "What is the spinning whirlpool in a blender called?", options: ["A vortex", "A splashy", "A tornado-doughnut", "A whizzle"], answer: 0 },
+      { q: "Why use FROZEN berries instead of ice cubes?", options: ["They're louder", "Thick and icy without watering it down", "Ice is expensive", "Berries hate being warm"], answer: 1 },
+      { q: "Can you taste the spinach in this smoothie?", options: ["Yes, very much", "Barely at all - the fruit hides it", "It tastes like chips", "Spinach has no taste ever"], answer: 1 },
+    ],
+  },
+  {
+    id: "mini-pizzas",
+    title: "Mini Margherita Pizzas",
+    emoji: "🍕",
+    category: "Family Meals",
+    time: "30 min",
+    difficulty: "Easy",
+    serves: "4 mini pizzas",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "4 mini pitta breads or muffin halves", "4 tbsp passata (tomato sauce)",
+      "1 ball of mozzarella", "A few basil leaves", "A drizzle of olive oil", "Your favourite veggie toppings",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 200°C.", safety: true },
+      { text: "Put the pitta breads on a baking tray." },
+      { text: "Spoon passata onto each one and spread it out with the back of the spoon - like painting a little red circle!" },
+      { text: "Tear the mozzarella into pieces and share it out on top." },
+      { text: "Add your toppings. Make a funny face with them if you like - olive eyes, pepper smiles, sweetcorn freckles!" },
+      { text: "Grown-up puts the tray in the oven.", safety: true },
+      { text: "Bake for 10 minutes until the cheese is melty and bubbling. Challenge time!", timer: 10 },
+      { text: "Grown-up takes them out. Add basil leaves on top, wait 2 minutes so you don't burn your tongue, and enjoy!", safety: true },
+    ],
+    science: [
+      "Cheese melts because heat makes the protein and fat inside relax and flow. Mozzarella is the stretchiest because its proteins form long stringy ropes!",
+      "The oven browns food using something called the Maillard reaction - it's the same science that makes toast golden and delicious.",
+    ],
+    quiz: [
+      { q: "Why is mozzarella so stretchy when melted?", options: ["It does yoga", "Its proteins form long stringy ropes", "It's made of elastic", "Magic"], answer: 1 },
+      { q: "What is the browning of food in the oven called?", options: ["The Maillard reaction", "The toasty twist", "Sunburn", "Cheese magic"], answer: 0 },
+      { q: "4 pizzas need 4 tbsp of passata. How much for 8 pizzas?", options: ["4 tbsp", "6 tbsp", "8 tbsp", "1 bucket"], answer: 2 },
+    ],
+  },
+  {
+    id: "crispy-cakes",
+    title: "Chocolate Crispy Cakes",
+    emoji: "🍫",
+    category: "Bakes & Cakes",
+    time: "40 min",
+    difficulty: "Super Easy",
+    serves: "8 cakes",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "100g milk chocolate", "50g butter", "2 tbsp golden syrup",
+      "80g rice crispies or cornflakes", "8 paper cases",
+    ],
+    steps: [
+      { text: "Break the chocolate into a heatproof bowl with the butter and golden syrup." },
+      { text: "Ask a grown-up to melt it - either over a pan of warm water or in short bursts in the microwave.", safety: true },
+      { text: "Stir until smooth and glossy like a chocolate river." },
+      { text: "Tip in the rice crispies and gently stir until every single one is coated in chocolate." },
+      { text: "Spoon the mixture into paper cases. Licking the spoon afterwards is the chef's reward!" },
+      { text: "Pop them in the fridge to set. Challenge time while you wait!", timer: 20 },
+      { text: "Check one - if the chocolate is firm, they're ready. Share them out (or don't, we won't tell)." },
+    ],
+    science: [
+      "Melting is a reversible change - chocolate melts when warm and sets solid again when cold. The chocolate is the same stuff the whole time, just in different states!",
+      "Chocolate melts at about 34°C - just below your body temperature of 37°C. That's why it melts on your tongue. It was designed by nature to be delicious!",
+    ],
+    quiz: [
+      { q: "Melting chocolate is a ______ change.", options: ["Reversible", "Forever", "Scary", "Invisible"], answer: 0 },
+      { q: "Why does chocolate melt on your tongue?", options: ["Your tongue is warmer than its melting point", "Tongues are magnets", "It's afraid", "Spit dissolves it"], answer: 0 },
+      { q: "Where do crispy cakes go to set?", options: ["The oven", "The fridge", "Under a pillow", "The washing machine"], answer: 1 },
+    ],
+  },
+  {
+    id: "mango-lassi",
+    title: "Mango Lassi",
+    emoji: "🥭",
+    category: "Cold Drinks",
+    time: "10 min",
+    difficulty: "Super Easy",
+    serves: "2 glasses",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "1 ripe mango (or 200g frozen mango)", "200g plain yoghurt",
+      "100ml cold milk", "1 tsp honey", "A tiny pinch of ground cardamom (optional)",
+    ],
+    steps: [
+      { text: "If using fresh mango, ask a grown-up to cut it and scoop out the flesh.", safety: true },
+      { text: "Put the mango, yoghurt, milk and honey into the blender." },
+      { text: "Grown-up helps with the lid, then blend until smooth and creamy.", safety: true },
+      { text: "Taste it (chef's privilege!). Add a little more honey if you like it sweeter." },
+      { text: "Pour into glasses and add the tiniest pinch of cardamom on top. A drink fit for royalty!" },
+    ],
+    science: [
+      "Lassi comes from India and Pakistan and people have been making it for over 1,000 years - you're making history in a glass!",
+      "Yoghurt is milk that friendly bacteria have turned thick and tangy. Good bacteria are tiny kitchen helpers you can't even see.",
+    ],
+    quiz: [
+      { q: "What turns milk into yoghurt?", options: ["Friendly bacteria", "Freezing it", "Shouting at it", "Yellow paint"], answer: 0 },
+      { q: "Where does lassi originally come from?", options: ["The moon", "India and Pakistan", "Antarctica", "A factory"], answer: 1 },
+      { q: "2 glasses need 200g yoghurt. How much for 4 glasses?", options: ["100g", "200g", "400g", "1kg"], answer: 2 },
+    ],
+  },
+  {
+    id: "rainbow-wraps",
+    title: "Veggie Rainbow Wraps",
+    emoji: "🌯",
+    category: "Quick Snacks",
+    time: "15 min",
+    difficulty: "Easy",
+    serves: "2 wraps",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "2 tortilla wraps", "4 tbsp hummus", "1 carrot", "1/2 red pepper",
+      "1/4 red cabbage or a handful of lettuce", "A few cucumber sticks", "Sweetcorn",
+    ],
+    steps: [
+      { text: "Ask a grown-up to help grate the carrot and slice the pepper into thin strips.", safety: true },
+      { text: "Spread hummus all over each wrap, right to the edges - it's the glue that holds everything in!" },
+      { text: "Lay your veggies in colourful stripes across the middle: orange carrot, red pepper, purple cabbage, green cucumber, yellow sweetcorn. A rainbow!" },
+      { text: "Fold the bottom up, then roll the wrap tightly from one side like a sleeping bag." },
+      { text: "Ask a grown-up to cut each wrap in half diagonally so you can see the rainbow spiral inside!", safety: true },
+    ],
+    science: [
+      "Eating a rainbow isn't just pretty - each colour of vegetable has different vitamins. Orange = eyes, green = strong blood, red = healthy heart!",
+      "Hummus is made from chickpeas, which are seeds packed with protein - the building blocks your muscles use to grow.",
+    ],
+    quiz: [
+      { q: "Why eat lots of DIFFERENT coloured veggies?", options: ["Each colour has different vitamins", "It confuses your tummy", "Colours taste loud", "Just for photos"], answer: 0 },
+      { q: "What is hummus made from?", options: ["Clouds", "Chickpeas", "Potatoes", "Cheese"], answer: 1 },
+      { q: "What job does the hummus do in the wrap?", options: ["It's the glue", "It sings", "It keeps it cold", "Nothing"], answer: 0 },
+    ],
+  },
+  {
+    id: "chicken-fajitas",
+    title: "Sizzling Chicken Fajitas",
+    emoji: "🌮",
+    category: "Family Meals",
+    time: "30 min",
+    difficulty: "Medium",
+    serves: "4 people",
+    diet: { veggie: false, vegan: false, halal: true, kosher: false, halalNote: "Use halal chicken" },
+    ingredients: [
+      "2 chicken breasts (use halal chicken if needed)", "1 red pepper and 1 yellow pepper",
+      "1 red onion", "1 tbsp fajita spice mix", "1 tbsp oil", "8 small tortillas",
+      "Toppings: grated cheese, salsa, soured cream, lettuce",
+    ],
+    steps: [
+      { text: "A grown-up slices the chicken and peppers into strips. Chefs-in-training watch and learn the safe claw grip!", safety: true },
+      { text: "Put the chicken and veggie strips in a bowl, add the oil and spice mix, and toss with a spoon until everything is coated." },
+      { text: "Wash your hands really well after touching raw chicken - sing Happy Birthday twice while scrubbing!", safety: true },
+      { text: "A grown-up cooks it all in a hot pan for 8-10 minutes until the chicken is white all the way through.", safety: true },
+      { text: "While it cooks, set the table and put all the toppings in little bowls - restaurant style!" },
+      { text: "Warm the tortillas, then let everyone build their own fajita. Fold, munch, repeat!" },
+    ],
+    science: [
+      "Chicken changes from pink to white when cooked because heat changes the shape of its proteins - and that change tells us it's safe to eat.",
+      "We wash hands after touching raw chicken because it can carry invisible germs. Soap grabs the germs so water can wash them away!",
+    ],
+    quiz: [
+      { q: "How do you know chicken is cooked?", options: ["It's white all the way through", "It's still pink", "It winks at you", "It smells like flowers"], answer: 0 },
+      { q: "Why wash hands after touching raw chicken?", options: ["To wash away invisible germs", "To warm them up", "Chickens are dusty", "No reason"], answer: 0 },
+      { q: "4 people need 8 tortillas. How many for 2 people?", options: ["2", "4", "8", "16"], answer: 1 },
+    ],
+  },
+  {
+    id: "flapjacks",
+    title: "Golden Flapjacks",
+    emoji: "🍯",
+    category: "Bakes & Cakes",
+    time: "40 min",
+    difficulty: "Easy",
+    serves: "12 squares",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "175g butter", "140g golden syrup", "50g light brown sugar",
+      "250g porridge oats", "A handful of raisins (optional)",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 160°C and line a square tin with baking paper.", safety: true },
+      { text: "Grown-up melts the butter, syrup and sugar in a pan on low heat.", safety: true },
+      { text: "Take the pan off the heat. Tip in the oats (and raisins) and stir until every oat is glossy." },
+      { text: "Tip the mixture into the tin and press it down flat with the back of a spoon - press firmly, like tucking it in!" },
+      { text: "Grown-up puts it in the oven.", safety: true },
+      { text: "Bake for 20 minutes until golden at the edges. Challenge time!", timer: 20 },
+      { text: "Let it cool in the tin, then ask a grown-up to cut it into 12 squares.", safety: true },
+    ],
+    science: [
+      "Oats are full of slow-release energy - they power you up gradually all morning instead of all at once. That's why porridge is athlete fuel!",
+      "Golden syrup is 'hygroscopic' - a fancy word meaning it grabs water from the air. That's what keeps flapjacks soft and squidgy for days.",
+    ],
+    quiz: [
+      { q: "Why are oats great energy food?", options: ["Slow-release energy all morning", "They fizz", "They're made of sugar", "They shout encouragement"], answer: 0 },
+      { q: "What does 'hygroscopic' golden syrup do?", options: ["Grabs water from the air to stay soft", "Glows in the dark", "Makes noise", "Turns blue"], answer: 0 },
+      { q: "12 squares, 4 family members. How many squares each is FAIR?", options: ["1", "2", "3", "All for me"], answer: 2 },
+    ],
+  },
+  {
+    id: "strawberry-lemonade",
+    title: "Strawberry Lemonade",
+    emoji: "🍓",
+    category: "Cold Drinks",
+    time: "15 min",
+    difficulty: "Easy",
+    serves: "4 glasses",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "8 strawberries", "2 lemons", "3 tbsp sugar (or maple syrup)",
+      "600ml cold sparkling or still water", "Ice cubes and mint to serve",
+    ],
+    steps: [
+      { text: "Pull the green tops off the strawberries and put the berries in a bowl." },
+      { text: "Mash the strawberries with a fork or potato masher until squishy and juicy." },
+      { text: "Ask a grown-up to cut the lemons in half, then squeeze all the juice out - use your muscles!", safety: true },
+      { text: "Stir the sugar into the lemon juice until it disappears (dissolves)." },
+      { text: "Mix the strawberry mush and lemon juice in a jug, top up with cold water and stir." },
+      { text: "Add ice and a mint leaf to each glass, pour, and serve like a fancy café!" },
+    ],
+    science: [
+      "Sugar 'dissolves' in lemon juice - the crystals break into pieces so tiny you can't see them, but your tongue still finds them!",
+      "Lemons are sour because of citric acid. Adding sugar doesn't remove the acid - it just distracts your taste buds. Sneaky!",
+    ],
+    quiz: [
+      { q: "What happens when sugar dissolves?", options: ["It breaks into invisible tiny pieces", "It disappears forever", "It turns to ice", "It becomes salt"], answer: 0 },
+      { q: "What makes lemons sour?", options: ["Citric acid", "Grumpiness", "Yellow colour", "Seeds"], answer: 0 },
+      { q: "4 glasses need 8 strawberries. How many for 8 glasses?", options: ["8", "12", "16", "100"], answer: 2 },
+    ],
+  },
+  {
+    id: "jacket-potato",
+    title: "Cheesy Bean Jacket Potatoes",
+    emoji: "🥔",
+    category: "Family Meals",
+    time: "30 min",
+    difficulty: "Easy",
+    serves: "2 people",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "2 baking potatoes", "1 small tin of baked beans",
+      "A big handful of grated cheese", "A knob of butter", "A little salt and pepper",
+    ],
+    steps: [
+      { text: "Wash the potatoes and dry them. Stab each one a few times with a fork - this stops them EXPLODING in the microwave (really!)." },
+      { text: "Ask a grown-up to microwave the potatoes on high for about 8 minutes, turning halfway.", safety: true },
+      { text: "Ask a grown-up to warm the beans while the potatoes cook - challenge time for you!", safety: true, timer: 8 },
+      { text: "Grown-up checks the potatoes are soft and cuts a big cross in the top of each. Careful - steamy!", safety: true },
+      { text: "Squeeze the sides so the potato opens like a flower. Add butter, then beans, then a snowstorm of cheese." },
+      { text: "Watch the cheese melt from the heat of the beans. Dinner is served!" },
+    ],
+    science: [
+      "Why stab the potato? Steam builds up inside as it cooks. The fork holes let steam escape - no holes and the potato can burst like a balloon!",
+      "Microwaves cook by making the water inside food wiggle super fast - and wiggling molecules means heat. Your potato cooks from its own water!",
+    ],
+    quiz: [
+      { q: "Why do we stab the potato with a fork?", options: ["To let steam escape so it doesn't burst", "To check it's not a rock", "Potatoes like it", "For decoration"], answer: 0 },
+      { q: "How do microwaves cook food?", options: ["Making water molecules wiggle fast", "Tiny fire", "Loud music", "Freezing it"], answer: 0 },
+      { q: "What melts the cheese on top?", options: ["The heat of the beans", "Wishing hard", "The fridge", "Gravity"], answer: 0 },
+    ],
+  },
+  {
+    id: "fruit-kebabs",
+    title: "Party Fruit Kebabs",
+    emoji: "🍉",
+    category: "Quick Snacks",
+    time: "15 min",
+    difficulty: "Super Easy",
+    serves: "6 kebabs",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "A mix of fruit: strawberries, grapes, melon, pineapple chunks, banana",
+      "6 wooden skewers or paper straws", "A squeeze of lemon juice", "Coconut or soya yoghurt for dipping (optional)",
+    ],
+    steps: [
+      { text: "Wash all the fruit. Ask a grown-up to chop the big fruit into chunks.", safety: true },
+      { text: "Squeeze a little lemon juice over the banana pieces - this stops them going brown." },
+      { text: "Make a pattern plan: will you go rainbow order? Stripes? Every-other? Chefs design before they build!" },
+      { text: "Carefully slide the fruit onto the skewers following your pattern. Mind the pointy end!", safety: true },
+      { text: "Arrange them on a plate like a fan and serve with the dipping yoghurt. Party time!" },
+    ],
+    science: [
+      "Banana goes brown because oxygen in the air reacts with it - it's called oxidation. Lemon juice is an acid shield that blocks the oxygen!",
+      "An apple, a browning banana and a rusty bike have something in common: they're all examples of oxidation. Same science, different places!",
+    ],
+    quiz: [
+      { q: "Why does lemon juice stop banana going brown?", options: ["It blocks oxygen like a shield", "It paints it yellow", "Bananas love lemons", "It freezes it"], answer: 0 },
+      { q: "What is it called when air turns fruit brown?", options: ["Oxidation", "Brownification", "Fruit blush", "Melting"], answer: 0 },
+      { q: "6 kebabs for 6 friends... then 2 more friends arrive! How many kebabs do you need now?", options: ["6", "7", "8", "12"], answer: 2 },
+    ],
+  },
+];
+</script>
+  <script>
+/* Review client for Rahmah's Kitchen.
+   Two modes:
+   - Server mode (default): POSTs the photo to /api/review; the key lives in .env on the PC.
+   - Standalone/tablet mode (window.RK_STANDALONE): calls the AI directly from the browser
+     using a key a grown-up saved on this device (Badges page -> Grown-ups' corner).
+   Either way the caller gets { stars, wentWell[2], tryNext, funComment, source }. */
+
+const GROWN_UP_KEY_STORAGE = "rahmahs-kitchen-grown-up-key";
+
+const CLIENT_REVIEW_SCHEMA = {
+  type: "object",
+  properties: {
+    stars: { type: "integer", enum: [3, 4, 5] },
+    wentWell: { type: "array", items: { type: "string" } },
+    tryNext: { type: "string" },
+    funComment: { type: "string" },
+  },
+  required: ["stars", "wentWell", "tryNext", "funComment"],
+  additionalProperties: false,
+};
+
+const CLIENT_LOCAL_REVIEWS = [
+  {
+    stars: 4,
+    wentWell: ["It looks like you followed the steps really carefully", "The colours in your dish look lovely and appetising"],
+    tryNext: "Next time, try adding a little decoration on top to make it extra fancy!",
+    funComment: "Chef Sparkle would definitely ask for seconds!",
+  },
+  {
+    stars: 4,
+    wentWell: ["Great job getting everything onto the plate so neatly", "You can tell a lot of love went into making this"],
+    tryNext: "Try plating it up with a colourful napkin next time for the full restaurant effect!",
+    funComment: "If tasty had a picture in the dictionary, this might be it!",
+  },
+  {
+    stars: 5,
+    wentWell: ["This looks like something from a proper bakery", "Brilliant effort from start to finish"],
+    tryNext: "Next time, challenge yourself to make double so the whole family gets some!",
+    funComment: "Five stars! Chef Sparkle is doing a happy dance!",
+  },
+];
+
+function clientReviewPrompt(name) {
+  return `You are "Chef Sparkle", the warm, encouraging judge on a kids' cooking show.
+A child around 9 years old named ${name} has just cooked or baked something and photographed it.
+Review the photo of their dish. Rules you must always follow:
+- Be kind, playful and encouraging. Never harsh, never sarcastic about the child's effort.
+- Stars are 3, 4 or 5 only. 3 means "a great first go", 5 means "wow, restaurant-worthy!".
+- "wentWell" must contain EXACTLY 2 short things that genuinely look good in the photo.
+- "tryNext" is EXACTLY 1 gentle, fun tip to try next time, framed as an exciting experiment.
+- "funComment" is one short sentence that would make a 9-year-old giggle or feel proud.
+- Use simple words a 9-year-old understands. British English spelling.
+- If the photo does not appear to show food, be playful about it, give 3 stars, and encourage them to snap their dish.`;
+}
+
+function clientClampReview(raw) {
+  const review = {
+    stars: [3, 4, 5].includes(Number(raw.stars)) ? Number(raw.stars) : 4,
+    wentWell: Array.isArray(raw.wentWell) ? raw.wentWell.slice(0, 2).map(String) : [],
+    tryNext: String(raw.tryNext || "Try a sprinkle of something colourful on top next time!"),
+    funComment: String(raw.funComment || "Chef Sparkle says: keep on cooking, superstar!"),
+  };
+  while (review.wentWell.length < 2) {
+    review.wentWell.push("You finished the whole recipe from start to end - that takes real focus!");
+  }
+  return review;
+}
+
+function pickClientLocalReview() {
+  return { ...CLIENT_LOCAL_REVIEWS[Math.floor(Math.random() * CLIENT_LOCAL_REVIEWS.length)], source: "local" };
+}
+
+function grownUpKey() {
+  try { return localStorage.getItem(GROWN_UP_KEY_STORAGE) || ""; } catch (e) { return ""; }
+}
+function saveGrownUpKey(key) {
+  try { localStorage.setItem(GROWN_UP_KEY_STORAGE, key.trim()); return true; } catch (e) { return false; }
+}
+function removeGrownUpKey() {
+  try { localStorage.removeItem(GROWN_UP_KEY_STORAGE); } catch (e) { /* fine */ }
+}
+function grownUpKeyKind(key) {
+  if (!key) return null;
+  return key.startsWith("sk-ant") ? "claude" : "openai";
+}
+
+async function claudeBrowserReview(mediaType, base64, recipeTitle, childName, key, signal) {
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    signal,
+    headers: {
+      "content-type": "application/json",
+      "x-api-key": key,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+    },
+    body: JSON.stringify({
+      model: "claude-opus-4-8",
+      max_tokens: 2048,
+      system: clientReviewPrompt(childName),
+      output_config: { format: { type: "json_schema", schema: CLIENT_REVIEW_SCHEMA } },
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "image", source: { type: "base64", media_type: mediaType, data: base64 } },
+            { type: "text", text: `${childName} just made: "${recipeTitle}". Here is the photo of the finished dish. Please review it.` },
+          ],
+        },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`Claude API error ${res.status}`);
+  const data = await res.json();
+  const textBlock = (data.content || []).find((b) => b.type === "text");
+  return JSON.parse(textBlock.text);
+}
+
+async function openaiBrowserReview(mediaType, base64, recipeTitle, childName, key, signal) {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    signal,
+    headers: { "content-type": "application/json", Authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      max_tokens: 500,
+      response_format: { type: "json_object" },
+      messages: [
+        {
+          role: "system",
+          content:
+            clientReviewPrompt(childName) +
+            '\nRespond ONLY with a JSON object: {"stars": 3|4|5, "wentWell": [two strings], "tryNext": string, "funComment": string}',
+        },
+        {
+          role: "user",
+          content: [
+            { type: "image_url", image_url: { url: `data:${mediaType};base64,${base64}` } },
+            { type: "text", text: `${childName} just made: "${recipeTitle}". Please review the photo.` },
+          ],
+        },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`OpenAI API error ${res.status}`);
+  const data = await res.json();
+  return JSON.parse(data.choices[0].message.content);
+}
+
+/* Main entry point used by app.js. `signal` lets the caller abort/timeout. */
+async function getReview(photoDataUrl, recipeTitle, childName, signal) {
+  if (!window.RK_STANDALONE) {
+    const res = await fetch("/api/review", {
+      method: "POST",
+      signal,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ image: photoDataUrl, recipeName: recipeTitle, childName }),
+    });
+    if (!res.ok) throw new Error("review request failed");
+    return res.json();
+  }
+
+  const match = /^data:(image\/(?:jpeg|png|webp|gif));base64,(.+)$/.exec(photoDataUrl || "");
+  const key = grownUpKey();
+  if (!match || !key) return pickClientLocalReview();
+
+  try {
+    const raw =
+      grownUpKeyKind(key) === "claude"
+        ? await claudeBrowserReview(match[1], match[2], recipeTitle, childName, key, signal)
+        : await openaiBrowserReview(match[1], match[2], recipeTitle, childName, key, signal);
+    return { ...clientClampReview(raw), source: grownUpKeyKind(key) };
+  } catch (err) {
+    console.error("AI review failed, using built-in reviewer:", err);
+    return pickClientLocalReview();
+  }
+}
+
+/* Quick key test used by the Grown-ups' corner (tiny, near-free request) */
+async function testGrownUpKey(key) {
+  const kind = grownUpKeyKind(key);
+  if (kind === "claude") {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": key,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true",
+      },
+      body: JSON.stringify({
+        model: "claude-opus-4-8",
+        max_tokens: 10,
+        messages: [{ role: "user", content: "Reply with the single word: sizzle" }],
+      }),
+    });
+    return res.ok;
+  }
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: { "content-type": "application/json", Authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      max_tokens: 5,
+      messages: [{ role: "user", content: "Reply with the single word: sizzle" }],
+    }),
+  });
+  return res.ok;
+}
+</script>
+  <script>
+/* Blueberry Kitchen (designed by Rahmah, age 9) - app logic
+   Gamification rules:
+   - XP is only ever earned, never lost.
+   - Review stars per recipe only ever go UP.
+   - No streaks, no leaderboards, no guilt mechanics. */
+
+const STORAGE_KEY = "rahmahs-kitchen-v1";
+
+const RANKS = [
+  { name: "Kitchen Helper", emoji: "🥄", xp: 0 },
+  { name: "Junior Baker", emoji: "🧁", xp: 150 },
+  { name: "Sous Chef", emoji: "🍳", xp: 400 },
+  { name: "Head Chef", emoji: "👩‍🍳", xp: 800 },
+  { name: "Master Chef", emoji: "🌟", xp: 1500 },
+];
+
+const BADGES = [
+  { id: "first-bake", emoji: "🧁", name: "First Bake", desc: "Finish your first recipe", check: (s) => s.completed.length >= 1 },
+  { id: "photo-pro", emoji: "📸", name: "Photo Pro", desc: "Add your first photo to the cookbook", check: (s) => s.cookbook.some((e) => e.photo) },
+  { id: "science-whiz", emoji: "🔬", name: "Science Whiz", desc: "Answer 5 kitchen quiz questions right", check: (s) => s.quizCorrect >= 5 },
+  { id: "safety-star", emoji: "🦺", name: "Safety Star", desc: "Do 10 'grab a grown-up' checks", check: (s) => s.safetyChecks >= 10 },
+  { id: "bookworm", emoji: "📖", name: "Cookbook Starter", desc: "3 dishes in your cookbook", check: (s) => s.cookbook.length >= 3 },
+  { id: "collector", emoji: "🌟", name: "Super Collector", desc: "6 dishes in your cookbook", check: (s) => s.cookbook.length >= 6 },
+  { id: "drink-master", emoji: "🥤", name: "Drink Master", desc: "Make 2 cold drinks", check: (s) => s.completed.filter((id) => (allRecipes().find((r) => r.id === id) || {}).category === "Cold Drinks").length >= 2 },
+  { id: "rising-star", emoji: "⭐", name: "Rising Star", desc: "Reach Junior Baker rank", check: (s) => s.xp >= 150 },
+  { id: "recipe-inventor", emoji: "🧪", name: "Recipe Inventor", desc: "Create your very own recipe", check: (s) => s.myRecipes.length >= 1 },
+];
+
+const STICKERS = ["🦄", "🌈", "🏆", "🎉", "🍓", "⭐", "🧁", "🐝", "🎀", "🚀", "🍭", "💖"];
+const CATEGORIES = ["All", "Bakes & Cakes", "Cold Drinks", "Quick Snacks", "Family Meals", "Breakfast"];
+
+const BUILDER_EMOJI = ["🍰", "🍪", "🥤", "🍕", "🥪", "🍓", "🍫", "🥞", "🍜", "🍩"];
+const GENERIC_FACTS = [
+  "Honey never goes off! Archaeologists have found pots of honey thousands of years old that you could still eat today.",
+  "Popcorn pops because a tiny drop of water inside each kernel turns to steam and bursts the shell - a mini explosion you can eat!",
+  "Your tongue can taste five things: sweet, salty, sour, bitter and a savoury taste called umami - cheese and tomatoes are full of it.",
+  "Cold food tastes less sweet than warm food - that's why melted ice cream tastes extra sweet.",
+  "Cucumbers are about 95% water, so crunching one is almost like drinking a little glass of water!",
+  "Whisking egg whites traps millions of tiny air bubbles - that's how meringues get as fluffy as clouds.",
+];
+
+const DEFAULT_STATE = {
+  onboarded: false,
+  name: "Chef",
+  diet: [],
+  xp: 0,
+  badges: [],
+  stickers: [],
+  quizCorrect: 0,
+  safetyChecks: 0,
+  completed: [],
+  recipeStars: {},
+  cookbook: [],
+  myRecipes: [],
+};
+
+let state = loadState();
+let cooking = null; // active cooking session
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return { ...DEFAULT_STATE, ...JSON.parse(raw) };
+  } catch (e) { /* fresh start */ }
+  return { ...DEFAULT_STATE };
+}
+let storageWarned = false;
+function saveState() {
+  try {
+    const str = JSON.stringify(state);
+    localStorage.setItem(STORAGE_KEY, str);
+    if (str.length > 3_800_000 && !storageWarned) {
+      storageWarned = true;
+      toast("📖 Your cookbook is getting very full - ask a grown-up to help make space!");
+    }
+  } catch (e) {
+    // Storage is full. Tidy away the OLDEST photos first (newest entries sit at
+    // the front of the cookbook, so we walk backwards) and keep the entries.
+    const withPhotos = state.cookbook.filter((en) => en.photo);
+    for (let i = withPhotos.length - 1; i >= 0; i--) {
+      withPhotos[i].photo = null;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        toast("📖 Your cookbook was full, so an older photo was tidied away to make room");
+        return;
+      } catch (e2) { /* drop another and retry */ }
+    }
+    toast("📖 Your cookbook is completely full - ask a grown-up to help make space!");
+  }
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+/* ---------- XP, ranks, badges ---------- */
+function rankFor(xp) {
+  let current = RANKS[0];
+  for (const r of RANKS) if (xp >= r.xp) current = r;
+  return current;
+}
+function nextRank(xp) {
+  return RANKS.find((r) => r.xp > xp) || null;
+}
+function rankDisplayName(rank) {
+  return rank.name === "Master Chef" ? `Master Chef ${state.name}` : rank.name;
+}
+
+function awardXP(amount, reason) {
+  const before = rankFor(state.xp).name;
+  state.xp += amount;
+  const after = rankFor(state.xp);
+  saveState();
+  toast(`+${amount} XP ${reason}`);
+  if (after.name !== before) {
+    toast(`🎊 RANK UP! You are now ${rankDisplayName(after)} ${after.emoji}`);
+  }
+  checkBadges();
+}
+
+function checkBadges() {
+  for (const b of BADGES) {
+    if (!state.badges.includes(b.id) && b.check(state)) {
+      state.badges.push(b.id);
+      saveState();
+      toast(`🏅 New badge: ${b.name} ${b.emoji}`);
+    }
+  }
+}
+
+/* ---------- Toast (queued, so no celebration is ever lost) ---------- */
+const toastQueue = [];
+let toastShowing = false;
+function toast(msg) {
+  toastQueue.push(msg);
+  if (!toastShowing) drainToasts();
+}
+function drainToasts() {
+  const el = document.getElementById("toast");
+  if (!toastQueue.length) {
+    toastShowing = false;
+    return;
+  }
+  toastShowing = true;
+  el.textContent = toastQueue.shift();
+  el.classList.remove("hidden");
+  setTimeout(() => {
+    el.classList.add("hidden");
+    setTimeout(drainToasts, 250);
+  }, 2000);
+}
+
+/* ---------- Diet filtering ---------- */
+function suitsDiet(recipe) {
+  if (recipe.custom) return true; // her own recipes always suit her
+  const picks = state.diet.filter((d) => d !== "everything");
+  return picks.every((d) => recipe.diet[d]);
+}
+
+/* ---------- Recipe lookup (built-ins + her own) ---------- */
+function allRecipes() {
+  return RECIPES.concat(state.myRecipes);
+}
+
+/* ---------- Views ---------- */
+const view = document.getElementById("view");
+
+function show(html) {
+  stopTimer();
+  view.innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function setNav(active) {
+  document.getElementById("topbar").classList.toggle("hidden", !state.onboarded);
+  document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b.dataset.nav === active));
+}
+
+/* ---------- Onboarding ---------- */
+function renderOnboarding() {
+  setNav(null);
+  show(`
+    <div class="onboard">
+      <div class="mascot">👩‍🍳</div>
+      <h1>Welcome to Blueberry Kitchen! 🫐</h1>
+      <p class="sub">Cook real recipes, earn XP, collect badges and build your very own digital cookbook.</p>
+      <div class="card">
+        <h2>What's your chef name?</h2>
+        <input type="text" id="name-input" placeholder="Type your chef name" maxlength="20" value="${state.onboarded ? esc(state.name) : ""}" />
+        <h2>What do you eat?</h2>
+        <p class="sub">Pick everything that's true for you - we'll only show recipes that fit.</p>
+        <div class="chip-row" id="diet-chips">
+          <button class="chip" data-diet="everything">🍽️ Everything</button>
+          <button class="chip" data-diet="veggie">🥕 Vegetarian</button>
+          <button class="chip" data-diet="vegan">🌱 Vegan</button>
+          <button class="chip" data-diet="halal">☪️ Halal</button>
+          <button class="chip" data-diet="kosher">✡️ Kosher</button>
+        </div>
+        <button class="btn btn-primary btn-big" id="start-btn">Let's get cooking! 🍳</button>
+      </div>
+    </div>
+  `);
+
+  const chips = document.querySelectorAll("#diet-chips .chip");
+  chips.forEach((chip) => {
+    if (state.diet.includes(chip.dataset.diet)) chip.classList.add("selected");
+    chip.addEventListener("click", () => {
+      if (chip.dataset.diet === "everything") {
+        chips.forEach((c) => c.classList.remove("selected"));
+        chip.classList.add("selected");
+      } else {
+        document.querySelector('[data-diet="everything"]').classList.remove("selected");
+        chip.classList.toggle("selected");
+      }
+    });
+  });
+
+  document.getElementById("start-btn").addEventListener("click", () => {
+    const name = document.getElementById("name-input").value.trim() || "Chef";
+    state.name = name;
+    state.diet = [...document.querySelectorAll("#diet-chips .chip.selected")].map((c) => c.dataset.diet);
+    state.onboarded = true;
+    saveState();
+    renderHome();
+    toast(`Welcome, Chef ${state.name}! 👋`);
+  });
+}
+
+/* ---------- Home ---------- */
+let searchQuery = "";
+let activeCategory = "All";
+
+function renderHome() {
+  setNav("home");
+  const rank = rankFor(state.xp);
+  const next = nextRank(state.xp);
+  const pct = next ? Math.min(100, Math.round(((state.xp - rank.xp) / (next.xp - rank.xp)) * 100)) : 100;
+
+  show(`
+    ${resumeBannerHtml()}
+    <div class="card hero">
+      <div class="avatar">${rank.emoji}</div>
+      <div style="flex:1">
+        <div class="rank-name">${esc(rankDisplayName(rank))}</div>
+        <div class="xp-bar"><div class="xp-fill" style="width:${pct}%"></div></div>
+        <div class="xp-label">${state.xp} XP${next ? ` · ${next.xp - state.xp} XP to ${esc(next.name)} ${next.emoji}` : " · Top rank reached! 🎉"}</div>
+      </div>
+    </div>
+
+    <div class="searchbar">
+      <input type="text" id="search-input" placeholder="🔍 Search... try 'cold drinks' or 'pizza'" value="${esc(searchQuery)}" />
+    </div>
+    <div class="cat-row" id="cat-row">
+      ${CATEGORIES.map((c) => `<button class="cat ${c === activeCategory ? "active" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}
+    </div>
+    <div class="recipe-grid" id="recipe-grid"></div>
+  `);
+
+  wireResumeBanner();
+  document.getElementById("search-input").addEventListener("input", (e) => {
+    searchQuery = e.target.value;
+    renderRecipeGrid();
+  });
+  document.querySelectorAll("#cat-row .cat").forEach((b) =>
+    b.addEventListener("click", () => {
+      activeCategory = b.dataset.cat;
+      document.querySelectorAll("#cat-row .cat").forEach((x) => x.classList.toggle("active", x === b));
+      renderRecipeGrid();
+    })
+  );
+  renderRecipeGrid();
+}
+
+function renderRecipeGrid() {
+  const grid = document.getElementById("recipe-grid");
+  if (!grid) return;
+  const q = searchQuery.trim().toLowerCase();
+
+  const results = allRecipes().filter(suitsDiet)
+    .filter((r) => activeCategory === "All" || r.category === activeCategory)
+    .filter((r) => {
+      if (!q) return true;
+      const haystack = [r.title, r.category, r.difficulty, ...r.ingredients].join(" ").toLowerCase();
+      return q.split(/\s+/).every((word) => haystack.includes(word));
+    });
+
+  // Always show the "make your own" card, whatever the search or filters say.
+  const builderCard = `
+      <button class="recipe-card builder-cta" id="new-recipe-card">
+        <span class="big-emoji">➕</span>
+        <h3>My recipe</h3>
+        <div class="meta">Invent your very own recipe!</div>
+      </button>`;
+
+  if (!results.length) {
+    grid.innerHTML = `<div class="empty-state card" style="grid-column:1/-1"><span class="big-emoji">🕵️</span>No recipes found - try a different word, like "cake" or "drinks"!</div>` + builderCard;
+  } else {
+    grid.innerHTML = results
+      .map((r) => {
+        const stars = state.recipeStars[r.id];
+        const done = state.completed.includes(r.id);
+        return `
+      <button class="recipe-card" data-id="${r.id}">
+        <span class="big-emoji">${r.emoji}</span>
+        <h3>${esc(r.title)}</h3>
+        ${r.custom ? `<div class="my-pill">✨ My recipe</div>` : ""}
+        <div class="meta">⏱ ${r.time} · ${r.difficulty}</div>
+        ${stars ? `<div class="stars-mini">${"⭐".repeat(stars)}</div>` : done ? `<div class="done-tick">✔ Made it!</div>` : ""}
+      </button>`;
+      })
+      .join("") + builderCard;
+  }
+
+  grid.querySelectorAll(".recipe-card[data-id]").forEach((card) =>
+    card.addEventListener("click", () => renderRecipe(card.dataset.id))
+  );
+  document.getElementById("new-recipe-card").addEventListener("click", renderRecipeBuilder);
+}
+
+/* ---------- My Own Recipes builder ---------- */
+function renderRecipeBuilder() {
+  setNav("home");
+  const draft = { ingredients: [], steps: [] };
+
+  show(`
+    <button class="btn btn-ghost" id="back-btn">⬅ Back to recipes</button>
+    <div class="card builder">
+      <h1>Invent your own recipe! 🧪</h1>
+      <p class="sub">Dream it up, write it down, and it joins your kitchen forever.</p>
+      <h2>What's it called?</h2>
+      <input type="text" id="rb-name" placeholder="e.g. Rahmah's Rainbow Milkshake" maxlength="40" />
+      <h2>Pick an emoji</h2>
+      <div class="emoji-row" id="rb-emoji">
+        ${BUILDER_EMOJI.map((e, i) => `<button class="emoji-btn ${i === 0 ? "selected" : ""}" data-emoji="${e}">${e}</button>`).join("")}
+      </div>
+      <h2>What kind of recipe is it?</h2>
+      <div class="chip-row builder-chips" id="rb-cat">
+        ${CATEGORIES.filter((c) => c !== "All").map((c, i) => `<button class="chip ${i === 0 ? "selected" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}
+      </div>
+      <h2>How much does it make?</h2>
+      <input type="text" id="rb-serves" placeholder="e.g. 2 glasses" maxlength="30" />
+    </div>
+
+    <div class="card builder">
+      <h2>You will need 🛒</h2>
+      <ul class="ingredients" id="rb-ing-list"></ul>
+      <div class="builder-add-row">
+        <input type="text" id="rb-ing-input" placeholder="e.g. 1 ripe banana" maxlength="80" />
+        <button class="btn btn-secondary" id="rb-add-ing">Add ingredient ➕</button>
+      </div>
+    </div>
+
+    <div class="card builder">
+      <h2>The steps 👣</h2>
+      <ol class="builder-steps" id="rb-step-list"></ol>
+      <div class="builder-add-row">
+        <input type="text" id="rb-step-input" placeholder="e.g. Mash the banana until squishy" maxlength="200" />
+      </div>
+      <label class="builder-toggle"><input type="checkbox" id="rb-step-safety" /> 🦺 Grown-up needed for this step</label>
+      <label class="builder-toggle">⏰ Waiting timer: <input type="number" id="rb-step-timer" min="1" max="180" placeholder="0" /> minutes (leave it empty if there's no waiting)</label>
+      <button class="btn btn-secondary" id="rb-add-step">Add step ➕</button>
+    </div>
+
+    <button class="btn btn-primary btn-big" id="rb-save">Save my recipe! ✨</button>
+  `);
+
+  function renderIngredientList() {
+    const list = document.getElementById("rb-ing-list");
+    list.innerHTML = draft.ingredients.length
+      ? draft.ingredients.map((ing, i) => `<li>${esc(ing)} <button class="remove-btn" data-i="${i}" aria-label="Remove ingredient">✖</button></li>`).join("")
+      : `<li class="builder-empty">Nothing yet - add your first ingredient below!</li>`;
+    list.querySelectorAll(".remove-btn").forEach((b) =>
+      b.addEventListener("click", () => {
+        draft.ingredients.splice(Number(b.dataset.i), 1);
+        renderIngredientList();
+      })
+    );
+  }
+
+  function renderStepList() {
+    const list = document.getElementById("rb-step-list");
+    list.innerHTML = draft.steps.length
+      ? draft.steps.map((s, i) => `<li>${esc(s.text)}${s.safety ? " 🦺" : ""}${s.timer ? ` ⏰ ${s.timer} min` : ""} <button class="remove-btn" data-i="${i}" aria-label="Remove step">✖</button></li>`).join("")
+      : `<li class="builder-empty">No steps yet - what do you do first?</li>`;
+    list.querySelectorAll(".remove-btn").forEach((b) =>
+      b.addEventListener("click", () => {
+        draft.steps.splice(Number(b.dataset.i), 1);
+        renderStepList();
+      })
+    );
+  }
+
+  document.getElementById("back-btn").addEventListener("click", renderHome);
+
+  document.querySelectorAll("#rb-emoji .emoji-btn").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#rb-emoji .emoji-btn").forEach((b) => b.classList.remove("selected"));
+      btn.classList.add("selected");
+    })
+  );
+  document.querySelectorAll("#rb-cat .chip").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#rb-cat .chip").forEach((b) => b.classList.remove("selected"));
+      btn.classList.add("selected");
+    })
+  );
+
+  document.getElementById("rb-add-ing").addEventListener("click", () => {
+    const input = document.getElementById("rb-ing-input");
+    const text = input.value.trim();
+    if (!text) {
+      toast("Type an ingredient first, chef! ✍️");
+      return;
+    }
+    draft.ingredients.push(text);
+    input.value = "";
+    input.focus();
+    renderIngredientList();
+  });
+
+  document.getElementById("rb-add-step").addEventListener("click", () => {
+    const input = document.getElementById("rb-step-input");
+    const text = input.value.trim();
+    if (!text) {
+      toast("Type what to do in this step first! ✍️");
+      return;
+    }
+    const step = { text };
+    const safetyBox = document.getElementById("rb-step-safety");
+    if (safetyBox.checked) step.safety = true;
+    const timerInput = document.getElementById("rb-step-timer");
+    const mins = parseInt(timerInput.value, 10);
+    if (mins > 0) step.timer = Math.min(mins, 180);
+    draft.steps.push(step);
+    input.value = "";
+    safetyBox.checked = false;
+    timerInput.value = "";
+    renderStepList();
+  });
+
+  document.getElementById("rb-save").addEventListener("click", () => {
+    const title = document.getElementById("rb-name").value.trim();
+    if (!title) {
+      toast("Give your recipe a name first, chef! ✍️");
+      return;
+    }
+    if (!draft.ingredients.length) {
+      toast("Add at least one ingredient - what goes in it? 🛒");
+      return;
+    }
+    if (!draft.steps.length) {
+      toast("Add at least one step - how do you make it? 👣");
+      return;
+    }
+    const recipe = {
+      id: "my-" + Date.now(),
+      title,
+      emoji: document.querySelector("#rb-emoji .emoji-btn.selected").dataset.emoji,
+      category: document.querySelector("#rb-cat .chip.selected").dataset.cat,
+      time: "?",
+      difficulty: "My recipe",
+      serves: document.getElementById("rb-serves").value.trim() || "a chef-sized amount",
+      diet: { veggie: true, vegan: true, halal: true, kosher: true },
+      custom: true,
+      ingredients: draft.ingredients.slice(),
+      steps: draft.steps.slice(),
+      science: [],
+      quiz: [],
+    };
+    state.myRecipes.push(recipe);
+    saveState();
+    awardXP(30, "for inventing a recipe! 🧪");
+    renderRecipe(recipe.id);
+  });
+
+  renderIngredientList();
+  renderStepList();
+}
+
+/* ---------- Recipe detail ---------- */
+function renderRecipe(id) {
+  const r = allRecipes().find((x) => x.id === id);
+  if (!r) return renderHome();
+  setNav("home");
+
+  const dietPills = [];
+  if (!r.custom) {
+    if (r.diet.veggie) dietPills.push("🥕 Vegetarian");
+    if (r.diet.vegan) dietPills.push("🌱 Vegan");
+    if (r.diet.halal) dietPills.push(r.diet.halalNote ? `☪️ Halal (${r.diet.halalNote.toLowerCase()})` : "☪️ Halal");
+    if (r.diet.kosher) dietPills.push("✡️ Kosher-friendly");
+  }
+
+  show(`
+    <button class="btn btn-ghost" id="back-btn">⬅ Back to recipes</button>
+    <div class="card">
+      <div class="detail-head">
+        <span class="big-emoji">${r.emoji}</span>
+        <div>
+          <h1>${esc(r.title)}</h1>
+          <div class="meta">⏱ ${r.time} · ${r.difficulty} · Makes ${esc(r.serves)}</div>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill">${esc(r.category)}</span>
+        ${r.custom ? `<span class="my-pill">✨ My recipe</span>` : ""}
+        ${dietPills.map((p) => `<span class="pill diet">${p}</span>`).join("")}
+      </div>
+      <h2>You will need</h2>
+      <ul class="ingredients">${r.ingredients.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
+      <br/>
+      <button class="btn btn-primary btn-big" id="start-cooking">Start Cooking! 👩‍🍳</button>
+    </div>
+    ${r.science.length ? `<div class="card science-card">
+      <h3>🔬 Kitchen science sneak peek</h3>
+      <p>${esc(r.science[0])}</p>
+    </div>` : ""}
+    ${r.custom ? `<div style="text-align:center"><button class="btn btn-ghost" id="delete-recipe">🗑 Delete this recipe</button></div>` : ""}
+  `);
+
+  document.getElementById("back-btn").addEventListener("click", renderHome);
+  document.getElementById("start-cooking").addEventListener("click", () => startCooking(r));
+  if (r.custom) {
+    document.getElementById("delete-recipe").addEventListener("click", () => {
+      if (!confirm(`Delete "${r.title}"? Don't worry - your XP, stickers and cookbook memories stay safe forever.`)) return;
+      state.myRecipes = state.myRecipes.filter((x) => x.id !== r.id);
+      saveState();
+      renderHome();
+      toast("Recipe deleted. All your XP is safe! 💛");
+    });
+  }
+}
+
+/* ---------- Cooking mode ---------- */
+function startCooking(recipe) {
+  cooking = {
+    recipe,
+    step: 0,
+    quizPool: recipe.quiz.map((_, i) => i),
+    sciencePool: recipe.science.map((_, i) => i),
+    factPool: recipe.custom ? GENERIC_FACTS.map((_, i) => i) : [],
+    timerEndAt: null, // wall-clock deadline of a running step timer, survives navigation
+  };
+  renderStep();
+}
+
+/* Jump back into an in-progress cooking session (from the resume banner). */
+function resumeCooking() {
+  if (!cooking) return renderHome();
+  const s = cooking.recipe.steps[cooking.step];
+  if (s && s.timer && cooking.timerEndAt) renderTimer(s.timer);
+  else renderStep();
+}
+
+function resumeBannerHtml() {
+  if (!cooking) return "";
+  return `<button class="resume-banner" id="resume-cooking">🍳 You're still making ${esc(cooking.recipe.title)} - back to step ${cooking.step + 1} ➡️</button>`;
+}
+function wireResumeBanner() {
+  const b = document.getElementById("resume-cooking");
+  if (b) b.addEventListener("click", resumeCooking);
+}
+
+function renderStep() {
+  const { recipe, step } = cooking;
+  const s = recipe.steps[step];
+  setNav("home");
+
+  const dots = recipe.steps
+    .map((_, i) => `<div class="dot ${i < step ? "done" : i === step ? "now" : ""}"></div>`)
+    .join("");
+
+  show(`
+    <div class="cook-progress">${dots}</div>
+    <div class="card step-card">
+      <div class="step-num">${esc(recipe.title)} · Step ${step + 1} of ${recipe.steps.length}</div>
+      ${s.safety ? `<div class="safety-banner">🦺 GRAB A GROWN-UP for this step!</div>` : ""}
+      <div class="step-text">${esc(s.text)}</div>
+      ${
+        s.timer
+          ? `<button class="btn btn-primary btn-big" id="start-timer">Start the ${s.timer} minute timer ⏰</button>`
+          : `<button class="btn btn-primary btn-big" id="next-step">${s.safety ? "My grown-up is here! Next ➡️" : step === recipe.steps.length - 1 ? "All done! 🎉" : "Done - next step ➡️"}</button>`
+      }
+      <br/><br/>
+      <button class="btn btn-ghost" id="quit-cooking">✖ Stop cooking (progress isn't lost - XP is forever!)</button>
+    </div>
+  `);
+
+  document.getElementById("quit-cooking").addEventListener("click", () => {
+    cooking = null;
+    renderHome();
+  });
+
+  if (s.timer) {
+    document.getElementById("start-timer").addEventListener("click", () => renderTimer(s.timer));
+  } else {
+    document.getElementById("next-step").addEventListener("click", () => {
+      if (s.safety) {
+        state.safetyChecks += 1;
+        awardXP(5, "for kitchen safety 🦺");
+      } else {
+        awardXP(5, "for finishing a step");
+      }
+      advanceStep();
+    });
+  }
+}
+
+function advanceStep() {
+  cooking.timerEndAt = null;
+  cooking.step += 1;
+  if (cooking.step >= cooking.recipe.steps.length) {
+    renderFinish();
+  } else {
+    renderStep();
+  }
+}
+
+/* ---------- Timer + challenges ---------- */
+let timerInterval = null;
+let timerTick = null;
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  timerTick = null;
+}
+// Tablets throttle background timers - when the screen wakes, snap the
+// countdown straight to the correct wall-clock time.
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && timerTick) timerTick();
+});
+
+function renderTimer(minutes) {
+  // Anchor to wall-clock time so screen-lock or app-switching can't slow the
+  // countdown - the oven doesn't pause, so neither do we.
+  if (!cooking.timerEndAt) cooking.timerEndAt = Date.now() + minutes * 60000;
+
+  show(`
+    <div class="card step-card">
+      <div class="timer-sub">${esc(cooking.recipe.title)} is doing its thing... ⏳</div>
+      <div class="timer-display" id="timer-display"></div>
+      <div class="timer-sub">Challenge time - earn XP while you wait!</div>
+    </div>
+    <div id="challenge-zone"></div>
+    <div class="card step-card">
+      <button class="btn btn-secondary" id="timer-done" disabled>Timer still going...</button>
+      <br/><br/>
+      <button class="btn btn-ghost" id="skip-timer">⏭ Our timer already beeped - skip ahead</button>
+    </div>
+  `);
+
+  const display = document.getElementById("timer-display");
+  const doneBtn = document.getElementById("timer-done");
+  let dinged = false;
+
+  function tick() {
+    const remaining = Math.max(0, Math.ceil((cooking.timerEndAt - Date.now()) / 1000));
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
+    display.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    if (remaining <= 0 && !dinged) {
+      dinged = true;
+      stopTimer();
+      doneBtn.textContent = "DING! ⏰ Next step ➡️";
+      doneBtn.disabled = false;
+      doneBtn.classList.remove("btn-secondary");
+      doneBtn.classList.add("btn-primary");
+      toast("⏰ DING! Time's up!");
+    }
+  }
+  tick();
+  timerInterval = setInterval(tick, 1000);
+  timerTick = tick;
+
+  doneBtn.addEventListener("click", () => { stopTimer(); advanceStep(); });
+  document.getElementById("skip-timer").addEventListener("click", () => { stopTimer(); advanceStep(); });
+
+  renderChallenge();
+}
+
+function renderChallenge() {
+  const zone = document.getElementById("challenge-zone");
+  if (!zone) return;
+  const { recipe } = cooking;
+
+  if (cooking.quizPool.length > 0) {
+    const qi = cooking.quizPool.shift();
+    const q = recipe.quiz[qi];
+    zone.innerHTML = `
+      <div class="card challenge-card">
+        <div class="step-num">🧠 Quiz challenge</div>
+        <div class="challenge-q">${esc(q.q)}</div>
+        <div class="answer-grid">
+          ${q.options.map((o, i) => `<button class="answer-btn" data-i="${i}">${esc(o)}</button>`).join("")}
+        </div>
+      </div>`;
+    zone.querySelectorAll(".answer-btn").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const picked = Number(btn.dataset.i);
+        zone.querySelectorAll(".answer-btn").forEach((b) => (b.disabled = true));
+        const correctBtn = zone.querySelector(`[data-i="${q.answer}"]`);
+        correctBtn.classList.add("correct");
+        if (picked === q.answer) {
+          state.quizCorrect += 1;
+          awardXP(20, "for a correct answer! 🧠");
+        } else {
+          btn.classList.add("wrong");
+          toast("Nearly! Now you know for next time 💪");
+        }
+        setTimeout(renderChallenge, 1800);
+      })
+    );
+  } else if (cooking.sciencePool.length > 0) {
+    const si = cooking.sciencePool.shift();
+    zone.innerHTML = `
+      <div class="card science-card">
+        <h3>🔬 Kitchen science fact</h3>
+        <p>${esc(recipe.science[si])}</p>
+        <br/>
+        <button class="btn btn-secondary" id="next-fact">Another one! ➡️</button>
+      </div>`;
+    document.getElementById("next-fact").addEventListener("click", renderChallenge);
+  } else if (cooking.factPool.length > 0) {
+    const fi = cooking.factPool.shift();
+    zone.innerHTML = `
+      <div class="card science-card">
+        <h3>🔬 Kitchen science fact</h3>
+        <p>${esc(GENERIC_FACTS[fi])}</p>
+        <br/>
+        <button class="btn btn-secondary" id="next-fact">Another one! ➡️</button>
+      </div>`;
+    document.getElementById("next-fact").addEventListener("click", renderChallenge);
+  } else {
+    zone.innerHTML = `
+      <div class="card step-card">
+        <span class="big-emoji" style="font-size:2.6rem">🧘</span>
+        <p class="sub">Challenges complete, chef! Tidy your station like the pros do - a clean kitchen is a happy kitchen.</p>
+      </div>`;
+  }
+}
+
+/* ---------- Finish: photo + AI review ---------- */
+function renderFinish() {
+  const recipe = cooking.recipe;
+  cooking = null; // the cooking part is done - no resume banner for a finished dish
+  const isNewCompletion = !state.completed.includes(recipe.id);
+  if (isNewCompletion) state.completed.push(recipe.id);
+  const sticker = STICKERS[Math.floor(Math.random() * STICKERS.length)];
+  state.stickers.push(sticker);
+  // The cookbook entry is created NOW, so the dish is saved whatever she does
+  // next - the photo and review are added to it if they arrive.
+  const entry = addCookbookEntry(recipe, null, null);
+  saveState();
+  awardXP(50, `for finishing ${recipe.title}!`);
+
+  show(`
+    <div class="card finish">
+      <div class="confetti">🎉✨🎊</div>
+      <h1>You made ${esc(recipe.title)}! ${recipe.emoji}</h1>
+      <p class="sub">You earned a surprise sticker...</p>
+      <div class="sticker-reveal">${sticker}</div>
+      <p class="sub">It's saved in your cookbook! Now take a photo so Chef Sparkle can review it.</p>
+      <label class="btn btn-primary btn-big" for="photo-input">📸 Take a photo of your dish</label>
+      <input type="file" id="photo-input" accept="image/*" capture="environment" />
+      <br/><br/>
+      <button class="btn btn-ghost" id="skip-photo">Skip the photo this time</button>
+      <div id="photo-zone"></div>
+    </div>
+  `);
+
+  document.getElementById("skip-photo").addEventListener("click", () => {
+    renderCookbook();
+    toast("Saved to your cookbook (no photo this time) 📖");
+  });
+
+  document.getElementById("photo-input").addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const dataUrl = await downscaleImage(file, 700);
+      const zone = document.getElementById("photo-zone");
+      zone.innerHTML = `
+        <img src="${dataUrl}" class="photo-preview" alt="Your dish" />
+        <button class="btn btn-primary btn-big" id="send-review">Send to Chef Sparkle for review ✨</button>
+      `;
+      document.getElementById("send-review").addEventListener("click", () => requestReview(recipe, dataUrl, entry));
+    } catch (err) {
+      const zone = document.getElementById("photo-zone");
+      if (zone) zone.innerHTML = `<p class="sub" style="margin-top:14px">📷 Hmm, that photo was camera-shy! Try snapping a fresh one with the camera.</p>`;
+    } finally {
+      e.target.value = ""; // so picking the same file again re-fires this handler
+    }
+  });
+}
+
+function downscaleImage(file, maxSize) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL("image/jpeg", 0.72));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Could not read that image file"));
+    };
+    img.src = url;
+  });
+}
+
+async function requestReview(recipe, photoDataUrl, entry) {
+  show(`
+    <div class="card finish">
+      <span class="spinner">🍳</span>
+      <h2>Chef Sparkle is looking at your ${esc(recipe.title)}...</h2>
+      <p class="sub">Judges take their time with masterpieces!</p>
+      <button class="btn btn-ghost" id="review-escape">Taking too long? Save it anyway ➡️</button>
+    </div>
+  `);
+
+  // Never leave her on the spinner: a 25s timeout and an escape button both
+  // abort the request and drop into the kind built-in review below.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 25000);
+  document.getElementById("review-escape").addEventListener("click", () => controller.abort());
+
+  let review;
+  try {
+    review = await getReview(photoDataUrl, recipe.title, state.name, controller.signal);
+  } catch (err) {
+    review = {
+      stars: 4,
+      wentWell: ["You finished every single step like a real chef", "Your dish made it all the way to the photo - that's dedication"],
+      tryNext: "Next time, try arranging it on your fanciest plate!",
+      funComment: "Chef Sparkle's tummy is rumbling just looking at it!",
+    };
+  }
+  clearTimeout(timeout);
+
+  // Stars only ever go up
+  const prev = state.recipeStars[recipe.id] || 0;
+  const finalStars = Math.max(prev, review.stars);
+  state.recipeStars[recipe.id] = finalStars;
+
+  // Update the entry that renderFinish already created - never a duplicate.
+  entry.photo = photoDataUrl;
+  entry.review = { stars: finalStars, wentWell: review.wentWell, tryNext: review.tryNext, funComment: review.funComment };
+  saveState();
+  checkBadges();
+  awardXP(15, "for photographing your dish 📸");
+  awardXP(review.stars * 10, `for ${review.stars} stars from Chef Sparkle!`);
+
+  show(`
+    <div class="card finish">
+      <h1>Chef Sparkle's review 👩‍🍳✨</h1>
+      <img src="${photoDataUrl}" class="photo-preview" alt="Your dish" />
+      <div class="stars-big">${"⭐".repeat(finalStars)}</div>
+      ${finalStars > prev && prev > 0 ? `<p class="sub">Up from ${prev} stars last time - you're improving! 📈</p>` : ""}
+      <div class="review-list">
+        ${review.wentWell.map((w) => `<div class="item good">💚 ${esc(w)}</div>`).join("")}
+        <div class="item tip">💡 ${esc(review.tryNext)}</div>
+      </div>
+      <p class="fun-comment">"${esc(review.funComment)}"</p>
+      <br/>
+      <button class="btn btn-primary btn-big" id="to-cookbook">See it in my cookbook 📖</button>
+    </div>
+  `);
+  document.getElementById("to-cookbook").addEventListener("click", renderCookbook);
+}
+
+function addCookbookEntry(recipe, photo, review) {
+  const entry = {
+    recipeId: recipe.id,
+    title: recipe.title,
+    emoji: recipe.emoji,
+    date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+    photo,
+    review,
+  };
+  state.cookbook.unshift(entry);
+  saveState();
+  checkBadges();
+  return entry;
+}
+
+/* ---------- Cookbook ---------- */
+function renderCookbook() {
+  setNav("cookbook");
+  if (!state.cookbook.length) {
+    show(`
+      <h1>📖 ${esc(state.name)}'s Cookbook</h1>
+      <div class="card empty-state">
+        <span class="big-emoji">🍽️</span>
+        Your cookbook is hungry for its first dish!<br/>Finish a recipe and it'll appear here with your photo.
+        <br/><br/>
+        <button class="btn btn-primary" id="go-cook">Find a recipe 🔍</button>
+      </div>
+    `);
+    document.getElementById("go-cook").addEventListener("click", renderHome);
+    return;
+  }
+
+  show(`
+    ${resumeBannerHtml()}
+    <h1>📖 ${esc(state.name)}'s Cookbook</h1>
+    <p class="sub">${state.cookbook.length} dish${state.cookbook.length === 1 ? "" : "es"} and counting! Tap one to read Chef Sparkle's review again.</p>
+    <div class="cookbook-grid">
+      ${state.cookbook
+        .map(
+          (en, i) => `
+        <button class="card book-entry" data-i="${i}">
+          ${en.photo ? `<img src="${en.photo}" alt="${esc(en.title)}" />` : `<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;background:#fff1e0">${en.emoji}</div>`}
+          <div class="body">
+            <h3>${en.emoji} ${esc(en.title)}</h3>
+            <div class="date">${esc(en.date)}</div>
+            ${en.review ? `<div class="stars-mini">${"⭐".repeat(en.review.stars)}</div>` : ""}
+          </div>
+        </button>`
+        )
+        .join("")}
+    </div>
+  `);
+  wireResumeBanner();
+  document.querySelectorAll(".book-entry").forEach((tile) =>
+    tile.addEventListener("click", () => renderBookEntry(Number(tile.dataset.i)))
+  );
+}
+
+/* A single cookbook memory: big photo, the full review, and a "make it again" link. */
+function renderBookEntry(i) {
+  const en = state.cookbook[i];
+  if (!en) return renderCookbook();
+  setNav("cookbook");
+  const recipeStillExists = allRecipes().some((r) => r.id === en.recipeId);
+
+  show(`
+    <button class="btn btn-ghost" id="back-btn">⬅ Back to my cookbook</button>
+    <div class="card finish">
+      <h1>${en.emoji} ${esc(en.title)}</h1>
+      <p class="sub">Made on ${esc(en.date)}</p>
+      ${en.photo ? `<img src="${en.photo}" class="photo-preview" alt="${esc(en.title)}" />` : `<div style="font-size:5rem;margin:16px 0">${en.emoji}</div>`}
+      ${
+        en.review
+          ? `
+      <div class="stars-big">${"⭐".repeat(en.review.stars)}</div>
+      <div class="review-list">
+        ${(en.review.wentWell || []).map((w) => `<div class="item good">💚 ${esc(w)}</div>`).join("")}
+        ${en.review.tryNext ? `<div class="item tip">💡 ${esc(en.review.tryNext)}</div>` : ""}
+      </div>
+      ${en.review.funComment ? `<p class="fun-comment">"${esc(en.review.funComment)}"</p>` : ""}`
+          : `<p class="sub">No photo review for this one - next time, snap it for Chef Sparkle!</p>`
+      }
+      <br/>
+      ${recipeStillExists ? `<button class="btn btn-primary btn-big" id="make-again">Make it again! 🍳</button>` : ""}
+    </div>
+  `);
+  document.getElementById("back-btn").addEventListener("click", renderCookbook);
+  const again = document.getElementById("make-again");
+  if (again) again.addEventListener("click", () => renderRecipe(en.recipeId));
+}
+
+/* ---------- Badges ---------- */
+function renderBadges() {
+  setNav("badges");
+  const rank = rankFor(state.xp);
+  const next = nextRank(state.xp);
+  const pct = next ? Math.min(100, Math.round(((state.xp - rank.xp) / (next.xp - rank.xp)) * 100)) : 100;
+
+  show(`
+    ${resumeBannerHtml()}
+    <h1>🏅 ${esc(state.name)}'s Trophy Shelf</h1>
+    <div class="card hero">
+      <div class="avatar">${rank.emoji}</div>
+      <div style="flex:1">
+        <div class="rank-name">${esc(rankDisplayName(rank))}</div>
+        <div class="xp-bar"><div class="xp-fill" style="width:${pct}%"></div></div>
+        <div class="xp-label">${state.xp} XP${next ? ` · ${next.xp - state.xp} XP to ${esc(next.name)} ${next.emoji}` : " · Top rank! 🎉"}</div>
+      </div>
+    </div>
+    <h2>Badges (${state.badges.length}/${BADGES.length})</h2>
+    <div class="badge-grid">
+      ${BADGES.map(
+        (b) => `
+        <div class="card badge-tile ${state.badges.includes(b.id) ? "earned" : ""}">
+          <span class="big-emoji">${b.emoji}</span>
+          <h4>${esc(b.name)}</h4>
+          <p>${esc(b.desc)}</p>
+        </div>`
+      ).join("")}
+    </div>
+    <br/>
+    <h2>Sticker collection (${state.stickers.length})</h2>
+    <div class="card" style="font-size:2rem; letter-spacing:6px; text-align:center">
+      ${state.stickers.length ? state.stickers.join(" ") : '<span class="sub" style="font-size:1rem">Finish a recipe to win your first surprise sticker!</span>'}
+    </div>
+    ${window.RK_STANDALONE ? `<div style="text-align:center; margin-top:20px"><button class="btn btn-ghost" id="grown-ups">🔑 Grown-ups' corner</button></div>` : ""}
+  `);
+  wireResumeBanner();
+  const grownUps = document.getElementById("grown-ups");
+  if (grownUps) grownUps.addEventListener("click", renderGrownUps);
+}
+
+/* ---------- Grown-ups' corner (standalone/tablet edition only) ---------- */
+function renderGrownUps() {
+  setNav("badges");
+  const existing = grownUpKey();
+
+  show(`
+    <button class="btn btn-ghost" id="back-btn">⬅ Back to badges</button>
+    <div class="card">
+      <h1>🔑 Grown-ups' corner</h1>
+      <p class="sub">Paste an API key here to switch on real AI photo reviews from Chef Sparkle.
+      Use a key created just for this app with a low monthly spending cap - each review costs a few pence.
+      Without a key, a friendly built-in reviewer takes over, so the app always works.</p>
+      <p class="sub"><strong>${existing ? `A ${grownUpKeyKind(existing) === "claude" ? "Claude" : "OpenAI"} key is saved on this device ✅` : "No key saved on this device yet."}</strong></p>
+      <input type="password" id="key-input" class="key-input" placeholder="Paste the key (sk-ant-... or sk-...)" autocomplete="off" />
+      <div class="chip-row" style="justify-content:center">
+        <button class="btn btn-primary" id="key-save">Save key</button>
+        <button class="btn btn-secondary" id="key-test">Test it</button>
+        ${existing ? `<button class="btn btn-ghost" id="key-remove">Remove saved key</button>` : ""}
+      </div>
+    </div>
+  `);
+
+  document.getElementById("back-btn").addEventListener("click", renderBadges);
+  document.getElementById("key-save").addEventListener("click", () => {
+    const key = document.getElementById("key-input").value.trim();
+    if (!key) return toast("Paste a key first ✍️");
+    if (saveGrownUpKey(key)) {
+      toast(`✅ ${grownUpKeyKind(key) === "claude" ? "Claude" : "OpenAI"} key saved on this device`);
+      renderGrownUps();
+    } else {
+      toast("❌ Couldn't save the key - storage may be blocked in this browser");
+    }
+  });
+  document.getElementById("key-test").addEventListener("click", async () => {
+    const key = document.getElementById("key-input").value.trim() || grownUpKey();
+    if (!key) return toast("Paste or save a key first ✍️");
+    toast("Testing the key... ⏳");
+    try {
+      toast((await testGrownUpKey(key)) ? "✅ The key works! Chef Sparkle is ready" : "❌ That key was rejected - check it and try again");
+    } catch (err) {
+      toast("❌ Couldn't reach the AI - check the internet connection");
+    }
+  });
+  const removeBtn = document.getElementById("key-remove");
+  if (removeBtn) {
+    removeBtn.addEventListener("click", () => {
+      removeGrownUpKey();
+      toast("Key removed - back to the built-in reviewer");
+      renderGrownUps();
+    });
+  }
+}
+
+/* ---------- Boot ---------- */
+// Nav never destroys a cooking session - the resume banner brings her back.
+document.querySelectorAll(".nav-btn").forEach((b) =>
+  b.addEventListener("click", () => {
+    if (b.dataset.nav === "home") renderHome();
+    if (b.dataset.nav === "cookbook") renderCookbook();
+    if (b.dataset.nav === "badges") renderBadges();
+  })
+);
+
+if (state.onboarded) {
+  renderHome();
+} else {
+  renderOnboarding();
+}
+</script>
+</body>
+</html>
