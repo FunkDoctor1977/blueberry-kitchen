@@ -2093,7 +2093,13 @@ function renderBadges() {
     <div class="card" style="font-size:2rem; letter-spacing:6px; text-align:center">
       ${state.stickers.length ? state.stickers.join(" ") : '<span class="sub" style="font-size:1rem">Finish a recipe to win your first surprise sticker!</span>'}
     </div>
-    ${window.RK_STANDALONE ? `<div style="text-align:center; margin-top:20px"><button class="btn btn-ghost" id="grown-ups">🔑 Grown-ups' corner</button></div>` : ""}
+    ${window.RK_STANDALONE ? `
+    <br/>
+    <div class="card" style="text-align:center; border: 3px dashed var(--sun)">
+      <h2>🔑 Grown-ups' corner</h2>
+      <p class="sub">${grownUpKey() ? "AI reviews are switched on for this device ✅" : "Grown-ups: add an AI key here so Chef Sparkle can really review the dish photos (optional - a friendly built-in reviewer works without one)."}</p>
+      <button class="btn btn-secondary" id="grown-ups">Open the Grown-ups' corner</button>
+    </div>` : ""}
   `);
   wireResumeBanner();
   const grownUps = document.getElementById("grown-ups");
