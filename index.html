@@ -326,6 +326,12 @@ input[type="file"] { display: none; }
   text-align: center;
 }
 .builder-cta h3 { color: var(--straw-dark); }
+.invent-cta {
+  border: 3px dashed var(--lilac);
+  background: #f3efff;
+  text-align: center;
+}
+.invent-cta h3 { color: #6b5bb5; }
 .my-pill {
   display: inline-block;
   font-size: 0.75rem;
@@ -333,6 +339,17 @@ input[type="file"] { display: none; }
   background: #f3efff;
   color: #6b5bb5;
   border: 2px solid var(--lilac);
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin: 4px 0;
+}
+.ai-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--lilac);
+  color: #443787;
+  border: 2px solid #a793f2;
   padding: 2px 10px;
   border-radius: 999px;
   margin: 4px 0;
@@ -876,6 +893,332 @@ const RECIPES = [
       { q: "6 kebabs for 6 friends... then 2 more friends arrive! How many kebabs do you need now?", options: ["6", "7", "8", "12"], answer: 2 },
     ],
   },
+  {
+    id: "squidgy-chocolate-brownies",
+    title: "Squidgy Chocolate Brownies",
+    emoji: "🍫",
+    category: "Bakes & Cakes",
+    time: "50 min",
+    difficulty: "Easy",
+    serves: "12 squares",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "150g butter", "150g dark chocolate", "200g caster sugar",
+      "3 eggs", "100g plain flour", "30g cocoa powder", "A tiny pinch of salt",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 160°C and line a square tin with baking paper.", safety: true },
+      { text: "Break the chocolate into a heatproof bowl with the butter. A grown-up melts it over a pan of warm water or in short microwave bursts.", safety: true },
+      { text: "In a big bowl, whisk the eggs and sugar until pale and a little frothy - count to 100 while you whisk!" },
+      { text: "A grown-up checks the melted chocolate isn't too hot, then you pour it into the eggs and stir. Hello, chocolate river!", safety: true },
+      { text: "Sift in the flour, cocoa and salt, then gently fold until the mixture is glossy and gooey." },
+      { text: "Pour it into the tin and smooth the top with the back of a spoon." },
+      { text: "Grown-up puts the tin in the oven.", safety: true },
+      { text: "Bake for 25 minutes. The middle should still wobble a tiny bit - that's the squidge! Challenge time!", timer: 25 },
+      { text: "Grown-up takes it out. Let it cool completely in the tin, then ask them to cut it into 12 squares.", safety: true },
+    ],
+    science: [
+      "Squidgy brownies have lots of chocolate and butter but only a little flour. Less flour means less structure, so the middle stays soft and fudgy instead of cakey.",
+      "That shiny, crackly top happens when sugar dissolves into the eggs, rises up, and sets in the oven like a thin sheet of sweet glass!",
+    ],
+    quiz: [
+      { q: "Why are brownies squidgy in the middle?", options: ["Lots of chocolate and butter, only a little flour", "They're full of water", "The oven forgot them", "Squidge fairies"], answer: 0 },
+      { q: "What makes the shiny, crackly top?", options: ["Sugar dissolving into the eggs then setting like glass", "Glitter", "Melted cheese", "Cold air"], answer: 0 },
+      { q: "The brownies go in the oven at 3 o'clock and bake for 25 minutes. When do they come out?", options: ["3:25", "3:05", "4:00", "3:50"], answer: 0 },
+    ],
+  },
+  {
+    id: "banana-chocolate-muffins",
+    title: "Banana Chocolate Muffins",
+    emoji: "🍌",
+    category: "Bakes & Cakes",
+    time: "40 min",
+    difficulty: "Easy",
+    serves: "12 muffins",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "3 very ripe bananas (spotty ones are perfect)", "100g light brown sugar", "80ml vegetable oil",
+      "150ml oat or soya milk", "1 tsp vanilla extract", "250g self-raising flour",
+      "30g cocoa powder", "100g dairy-free dark chocolate chips",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 180°C and put 12 paper cases in a muffin tray.", safety: true },
+      { text: "Peel the bananas and mash them in a big bowl until really squishy - no lumps hiding!" },
+      { text: "Stir in the sugar, oil, plant milk and vanilla. The banana does the egg's job in this recipe - clever fruit!" },
+      { text: "Sift in the flour and cocoa, then gently fold everything together. Stop as soon as you can't see dry flour." },
+      { text: "Stir in the chocolate chips, saving a few to sprinkle on top." },
+      { text: "Spoon the mixture into the cases until each is about two-thirds full, then sprinkle on the saved chips." },
+      { text: "Grown-up puts the tray in the oven.", safety: true },
+      { text: "Bake for 20 minutes until risen and smelling amazing. Challenge time!", timer: 20 },
+      { text: "Grown-up takes them out. Let them cool - melted chocolate chips are little lava pockets!", safety: true },
+    ],
+    science: [
+      "No eggs needed! Mashed banana is sticky and full of natural pectin, so it glues the muffin together just like an egg would.",
+      "Baking powder in the flour makes carbon dioxide bubbles when it gets wet and warm - millions of tiny balloons puffing your muffins up in the oven.",
+    ],
+    quiz: [
+      { q: "What job does the mashed banana do in this recipe?", options: ["It sticks everything together like an egg would", "It makes the muffins yellow", "Nothing at all", "It makes them crunchy"], answer: 0 },
+      { q: "Which of these is a plant milk?", options: ["Oat milk", "Cow's milk", "Goat's milk", "Milkshake"], answer: 0 },
+      { q: "12 muffins need 3 bananas. How many bananas for 24 muffins?", options: ["3", "6", "9", "12"], answer: 1 },
+    ],
+  },
+  {
+    id: "sunshine-overnight-oats",
+    title: "Sunshine Overnight Oats",
+    emoji: "🥣",
+    category: "Breakfast",
+    time: "10 min (plus a sleep)",
+    difficulty: "Super Easy",
+    serves: "1 jar",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "50g porridge oats", "150ml oat or soya milk", "1 tbsp maple syrup",
+      "1 tbsp raisins", "A handful of frozen berries", "A few banana chunks for the morning",
+    ],
+    steps: [
+      { text: "Tip the oats into a jar or bowl with a lid." },
+      { text: "Pour in the plant milk and add the maple syrup. Stir like you mean it!" },
+      { text: "Stir in the raisins and drop the frozen berries on top - they'll defrost overnight and turn the top pink." },
+      { text: "Pop the lid on and put it in the fridge before bed. No timer needed - it gets ready all by itself while you sleep!" },
+      { text: "In the morning, give it a big stir, top with banana chunks, and enjoy your ready-made breakfast. You cooked while you dreamed!" },
+    ],
+    science: [
+      "Oats are like tiny sponges - leave them in milk overnight and they slowly soak it up, going soft and creamy without any cooking at all.",
+      "Maple syrup is the sap of maple trees, boiled down until sweet. It takes about 40 litres of sap to make just 1 litre of syrup!",
+    ],
+    quiz: [
+      { q: "How do the oats go soft without any cooking?", options: ["They soak up the milk overnight like sponges", "The fridge cooks them", "They melt", "Tiny elves stir them"], answer: 0 },
+      { q: "When is the best time to make overnight oats?", options: ["The evening before, so they're ready while you sleep", "Five minutes before breakfast", "At lunchtime", "Never - they make themselves"], answer: 0 },
+      { q: "Where does maple syrup come from?", options: ["The sap of maple trees", "Bees", "Melted sweets", "Golden paint"], answer: 0 },
+    ],
+  },
+  {
+    id: "cheesy-scrambled-egg-toast",
+    title: "Cheesy Scrambled Egg Toast",
+    emoji: "🍳",
+    category: "Breakfast",
+    time: "15 min",
+    difficulty: "Easy",
+    serves: "2 people",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "4 eggs", "A splash of milk", "A knob of butter",
+      "2 thick slices of bread", "A handful of grated cheese", "A tiny pinch of pepper",
+    ],
+    steps: [
+      { text: "Crack the eggs into a bowl one at a time. If any shell sneaks in, scoop it out with a big spoon - shell is faster to catch with another bit of shell!" },
+      { text: "Add the splash of milk and the pinch of pepper, then whisk with a fork until it's all one sunny yellow." },
+      { text: "Pop the bread in the toaster and push it down." },
+      { text: "Ask a grown-up to melt the butter in a pan on a LOW heat - low and slow is the secret.", safety: true },
+      { text: "Grown-up pours in the eggs and stirs gently while you watch them turn from runny to fluffy clouds.", safety: true },
+      { text: "Grown-up takes the pan off the heat, then you sprinkle in the cheese and watch it melt into the eggs.", safety: true },
+      { text: "Butter the toast, pile the cheesy eggs on top, and serve. Breakfast, sorted!" },
+    ],
+    science: [
+      "Egg proteins are curled up like tiny balls of wool. Heat makes them unravel and link together - that's how runny egg turns into fluffy solid egg.",
+      "Gentle heat makes soft, creamy scrambled eggs. Fierce heat squeezes the water out and makes them rubbery. Great chefs are patient chefs!",
+    ],
+    quiz: [
+      { q: "Why do scrambled eggs turn from runny to fluffy?", options: ["Heat changes the shape of the egg proteins", "The fork whisks them solid", "They're ticklish", "The cheese glues them"], answer: 0 },
+      { q: "Why cook scrambled eggs on a LOW heat?", options: ["Gentle heat keeps them soft and creamy", "To save electricity", "Low heat is quieter", "So the toast wins the race"], answer: 0 },
+      { q: "This serves 2 people with 4 eggs. How many eggs for 4 people?", options: ["4", "6", "8", "12"], answer: 2 },
+    ],
+  },
+  {
+    id: "rainbow-veggie-pasta-bake",
+    title: "Rainbow Veggie Pasta Bake",
+    emoji: "🍝",
+    category: "Family Meals",
+    time: "45 min",
+    difficulty: "Medium",
+    serves: "4 people",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "300g pasta shapes (penne or fusilli)", "1 red pepper", "1 courgette",
+      "1 small tin of sweetcorn", "500g passata", "1 tsp dried oregano",
+      "100g grated cheese", "A drizzle of olive oil",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 190°C.", safety: true },
+      { text: "A grown-up chops the pepper and courgette into small chunks while you sort them into colour piles - red, green, yellow!", safety: true },
+      { text: "Grown-up boils the pasta in a big pan for 10 minutes. Challenge time while it bubbles!", safety: true, timer: 10 },
+      { text: "Grown-up drains the pasta - stand back, it's steamy!", safety: true },
+      { text: "Tip the pasta, chopped veggies, sweetcorn, passata and oregano into a big baking dish and mix until everything wears a red coat." },
+      { text: "Sprinkle the cheese all over the top like snow on a mountain." },
+      { text: "Grown-up puts the dish in the oven.", safety: true },
+      { text: "Bake for 20 minutes until golden and bubbling. More challenge time!", timer: 20 },
+      { text: "Grown-up takes it out. Let it rest for 5 minutes - the middle is like hot lava at first!", safety: true },
+    ],
+    science: [
+      "Dry pasta is hard because all its water was taken out at the factory. Boiling puts the water back in - the pasta swells up and turns soft again.",
+      "The bake keeps cooking for a few minutes after it leaves the oven because the inside is holding lots of heat. That's why chefs let food rest!",
+    ],
+    quiz: [
+      { q: "Why does hard, dry pasta go soft when you boil it?", options: ["It soaks the water back up and swells", "It gets tired", "The salt melts it", "It's secretly rubber"], answer: 0 },
+      { q: "Why do we let the bake rest for 5 minutes?", options: ["The inside is still really hot", "The pasta needs a nap", "Cheese is shy", "To make it colder than the fridge"], answer: 0 },
+      { q: "The bake needs 20 minutes in the oven. You peek at 10 minutes. How much longer to wait?", options: ["10 minutes", "20 minutes", "5 minutes", "No more"], answer: 0 },
+    ],
+  },
+  {
+    id: "gentle-chickpea-curry",
+    title: "Gentle Chickpea Curry with Fluffy Rice",
+    emoji: "🍛",
+    category: "Family Meals",
+    time: "40 min",
+    difficulty: "Medium",
+    serves: "4 people",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "1 tbsp vegetable oil", "1 onion", "2 garlic cloves",
+      "1 tbsp mild curry powder", "1 tin of chickpeas (drained)", "1 tin of chopped tomatoes",
+      "1 tin of coconut milk (400ml)", "250g basmati rice", "A big handful of spinach",
+    ],
+    steps: [
+      { text: "A grown-up chops the onion and garlic. Onions can make eyes watery - wear swimming goggles if you fancy a giggle!", safety: true },
+      { text: "Grown-up heats the oil in a big pan and fries the onion for 5 minutes until soft and golden.", safety: true },
+      { text: "Measure out the curry powder like a spice scientist, then the grown-up stirs it into the pan for 1 minute - smell that!", safety: true },
+      { text: "Grown-up tips in the chickpeas, tomatoes and coconut milk and gives it all a big stir.", safety: true },
+      { text: "Let it simmer gently for 15 minutes so the flavours make friends. Challenge time while it bubbles!", safety: true, timer: 15 },
+      { text: "Meanwhile, a grown-up cooks the rice in boiling water until fluffy.", safety: true },
+      { text: "Grown-up stirs the spinach into the curry - watch it shrink like magic in seconds!", safety: true },
+      { text: "Spoon the fluffy rice into bowls, then a grown-up ladles the hot golden curry on top - hot pans are grown-up territory! Serve your masterpiece.", safety: true },
+    ],
+    science: [
+      "Coconut milk isn't milk from an animal - it's made by blending the white part of a coconut with water. It's what makes this curry creamy and gentle.",
+      "Turmeric, the spice that makes curry powder golden, is actually a root - a bit like ginger's bright orange cousin!",
+    ],
+    quiz: [
+      { q: "Where does coconut milk come from?", options: ["The white part of coconuts blended with water", "Cows", "Milking coconut trees", "The sea"], answer: 0 },
+      { q: "Why does the curry simmer for 15 minutes?", options: ["So the flavours mix and make friends", "To make it louder", "To cool it down", "The pan needs a rest"], answer: 0 },
+      { q: "Chickpeas are packed with...?", options: ["Protein to help you grow", "Chicken", "Sugar", "Air"], answer: 0 },
+    ],
+  },
+  {
+    id: "cheesy-garlic-bread",
+    title: "Cheesy Garlic Bread Slices",
+    emoji: "🥖",
+    category: "Quick Snacks",
+    time: "20 min",
+    difficulty: "Easy",
+    serves: "8 slices",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "1 baguette", "80g soft butter", "2 garlic cloves",
+      "A big handful of grated cheese", "1 tsp dried parsley",
+    ],
+    steps: [
+      { text: "Ask a grown-up to preheat the oven to 190°C.", safety: true },
+      { text: "A grown-up cuts the baguette into 8 thick slices and puts them on a baking tray.", safety: true },
+      { text: "Squash the garlic through a garlic press - push down hard, chef muscles!" },
+      { text: "Mash the soft butter, squashed garlic and parsley together in a bowl until it's all mixed." },
+      { text: "Spread the garlicky butter onto every slice, right to the edges - no bare corners allowed!" },
+      { text: "Sprinkle the cheese on top of each slice." },
+      { text: "Grown-up puts the tray in the oven.", safety: true },
+      { text: "Bake for 8 minutes until golden and bubbling. Quick challenge time!", timer: 8 },
+      { text: "Grown-up takes the tray out. Wait 2 minutes before munching - melted cheese is sneaky-hot!", safety: true },
+    ],
+    science: [
+      "Garlic barely smells until you crush it. Crushing breaks its cells and lets special oils mix together - that amazing smell is the garlic's defence system!",
+      "Bread goes crispy in the oven because the heat dries out the surface, while the butter soaks inwards keeping the middle soft. Best of both worlds!",
+    ],
+    quiz: [
+      { q: "Why does garlic smell stronger when you crush it?", options: ["Crushing releases its smelly oils", "It's shouting", "Garlic hates presses", "It doesn't"], answer: 0 },
+      { q: "What does the butter do in the oven?", options: ["Melts and soaks into the bread", "Jumps off the slice", "Freezes solid", "Turns into sugar"], answer: 0 },
+      { q: "8 slices shared fairly between 4 people is how many each?", options: ["1", "2", "3", "8"], answer: 1 },
+    ],
+  },
+  {
+    id: "tropical-ice-lollies",
+    title: "Tropical Fruit Ice Lollies",
+    emoji: "🍧",
+    category: "Quick Snacks",
+    time: "15 min (plus freezing)",
+    difficulty: "Super Easy",
+    serves: "6 lollies",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "1 ripe mango (or 200g frozen mango)", "1 banana", "200ml pineapple juice",
+      "A squeeze of lime juice (optional)", "6 lolly moulds and sticks",
+    ],
+    steps: [
+      { text: "Ask a grown-up to peel the mango and chop it into chunks.", safety: true },
+      { text: "Peel the banana and break it into pieces with your hands - no knife needed!" },
+      { text: "Put the mango, banana, pineapple juice and lime squeeze in the blender. Grown-up helps with the lid, then blend until super smooth.", safety: true },
+      { text: "Pour the sunshine-coloured mixture into the lolly moulds, leaving a small gap at the top - ice grows as it freezes!" },
+      { text: "Push the sticks in and put the moulds in the freezer for at least 3 hours - do the challenges, then check tomorrow!", timer: 180 },
+      { text: "To get a lolly out, hold the mould under warm tap water for a few seconds and it will slide free. Tropical treat, made by you!" },
+    ],
+    science: [
+      "Water freezes at 0°C, but fruity mixtures freeze a little lower because the sugar gets in the way of the ice crystals - that's why lollies are softer than ice cubes.",
+      "Freezing takes hours because the cold has to travel all the way to the middle. The outside freezes first and the very centre freezes last!",
+    ],
+    quiz: [
+      { q: "At what temperature does water freeze?", options: ["0°C", "100°C", "37°C", "50°C"], answer: 0 },
+      { q: "Why are fruit lollies softer than ice cubes?", options: ["Sugar stops the water freezing completely solid", "They're warmer", "Fruit is squishy forever", "The sticks keep them soft"], answer: 0 },
+      { q: "Why do lollies need AT LEAST 3 hours in the freezer?", options: ["Cold takes a long time to reach the middle", "The freezer is shy", "Lollies like waiting", "They don't really"], answer: 0 },
+    ],
+  },
+  {
+    id: "sparkly-apple-fizz",
+    title: "Sparkly Apple Fizz",
+    emoji: "🍎",
+    category: "Cold Drinks",
+    time: "5 min",
+    difficulty: "Super Easy",
+    serves: "2 glasses",
+    diet: { veggie: true, vegan: true, halal: true, kosher: true },
+    ingredients: [
+      "300ml cloudy apple juice", "300ml sparkling water", "A handful of frozen berries",
+      "2 thin apple slices to decorate (optional)", "A couple of mint leaves",
+    ],
+    steps: [
+      { text: "Drop a few frozen berries into each glass - they're your magic ice cubes." },
+      { text: "Pour the apple juice halfway up each glass." },
+      { text: "Slowly top up with sparkling water. Tilt the glass a little so it doesn't fizz over the top!" },
+      { text: "Watch the bubbles cling to the berries like tiny silver pearls, then give it one gentle stir." },
+      { text: "Ask a grown-up to cut two thin apple slices to sit on the rims - fancy!", safety: true },
+      { text: "Add a mint leaf, clink glasses and say cheers. Posh drinks, zero fuss!" },
+    ],
+    science: [
+      "The fizz is carbon dioxide gas squeezed into the water at the factory. When you open the bottle, the pressure drops and the gas escapes as bubbles!",
+      "Bubbles love forming on rough surfaces like frozen berries. Scientists call the spots where bubbles start 'nucleation sites' - you made a science experiment you can drink!",
+    ],
+    quiz: [
+      { q: "What are the bubbles in sparkling water?", options: ["Carbon dioxide gas", "Air from a bicycle pump", "Tiny fish breaths", "Soap"], answer: 0 },
+      { q: "Why do bubbles cling to the frozen berries?", options: ["Bubbles form on rough surfaces - nucleation!", "The berries are sticky", "Bubbles are cold", "Magnets"], answer: 0 },
+      { q: "What happens to the drink as the berries thaw?", options: ["Their juice slowly turns it pink", "It turns to jelly", "It gets fizzier", "Nothing ever"], answer: 0 },
+    ],
+  },
+  {
+    id: "dreamy-chocolate-milkshake",
+    title: "Dreamy Chocolate Milkshake",
+    emoji: "🥛",
+    category: "Cold Drinks",
+    time: "10 min",
+    difficulty: "Super Easy",
+    serves: "2 glasses",
+    diet: { veggie: true, vegan: false, halal: true, kosher: true },
+    ingredients: [
+      "400ml cold milk", "2 big scoops of vanilla ice cream", "2 tbsp cocoa powder",
+      "1 banana (optional, for extra creaminess)", "Squirty cream and a dusting of cocoa to top (optional)",
+    ],
+    steps: [
+      { text: "Put the milk, ice cream, cocoa powder and banana into the blender jug." },
+      { text: "Ask a grown-up to help you put the lid on TIGHT, then blend for 30 seconds until thick and frothy.", safety: true },
+      { text: "Check it: too thin? Add another scoop of ice cream and blend again. Too thick? A splash more milk." },
+      { text: "Pour into two tall glasses - watch the froth wobble on top!" },
+      { text: "Add a swirl of squirty cream and a tiny dusting of cocoa if you like. Straws in, dream on!" },
+    ],
+    science: [
+      "A milkshake is actually a foam! The blender whips millions of tiny air bubbles into the milk, and the ice cream helps trap them - that's the froth.",
+      "Cocoa powder comes from cacao beans that grow in pods on trees near the equator - your milkshake started life in a rainforest!",
+    ],
+    quiz: [
+      { q: "What makes a milkshake thick and frothy?", options: ["Tiny air bubbles whipped in by the blender", "Loud noises", "Chocolate spells", "The straw"], answer: 0 },
+      { q: "Where does cocoa powder come from?", options: ["Beans that grow on cacao trees", "Brown rocks", "Chocolate mines", "Coconut shells"], answer: 0 },
+      { q: "2 glasses need 2 scoops of ice cream. How many scoops for 4 glasses?", options: ["2", "3", "4", "8"], answer: 2 },
+    ],
+  },
 ];
 </script>
   <script>
@@ -1057,6 +1400,213 @@ async function getReview(photoDataUrl, recipeTitle, childName, signal) {
   }
 }
 
+/* ---------- Chef Sparkle invents a recipe ---------- */
+
+const CLIENT_RECIPE_CATEGORIES = ["Bakes & Cakes", "Cold Drinks", "Quick Snacks", "Family Meals", "Breakfast"];
+
+const CLIENT_RECIPE_SCHEMA = {
+  type: "object",
+  properties: {
+    title: { type: "string" },
+    emoji: { type: "string", description: "One single emoji that suits the dish" },
+    category: { type: "string", enum: CLIENT_RECIPE_CATEGORIES },
+    time: { type: "string", description: 'Friendly total time, e.g. "30 min"' },
+    serves: { type: "string", description: 'How much it makes, e.g. "2 glasses"' },
+    ingredients: { type: "array", items: { type: "string" } },
+    steps: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          text: { type: "string" },
+          safety: { type: "boolean" },
+          timer: { type: "integer", description: "Waiting minutes for this step, 0 = no timer" },
+        },
+        required: ["text", "safety", "timer"],
+        additionalProperties: false,
+      },
+    },
+    science: { type: "array", items: { type: "string" } },
+    quiz: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          q: { type: "string" },
+          options: { type: "array", items: { type: "string" } },
+          answer: { type: "integer" },
+        },
+        required: ["q", "options", "answer"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["title", "emoji", "category", "time", "serves", "ingredients", "steps", "science", "quiz"],
+  additionalProperties: false,
+};
+
+const CLIENT_RECIPE_SHAPE_NOTE =
+  '\nRespond ONLY with a JSON object exactly like: {"title": string, "emoji": string, "category": string, "time": string, "serves": string, "ingredients": [string, ...], "steps": [{"text": string, "safety": boolean, "timer": integer minutes (0 = no timer)}, ...], "science": [string, string], "quiz": [{"q": string, "options": [4 strings], "answer": integer 0-3}, exactly 3 of them]}';
+
+function clientDietRulesText(diet) {
+  const rules = [];
+  if (diet.includes("vegan")) rules.push("vegan (NO animal products at all - no meat, fish, dairy, eggs, honey or gelatine)");
+  if (diet.includes("veggie")) rules.push("vegetarian (no meat or fish)");
+  if (diet.includes("halal")) rules.push('halal (no pork, no alcohol, and add a note like "use halal chicken" to any meat ingredient)');
+  if (diet.includes("kosher")) rules.push("kosher (no pork or shellfish, and NEVER mix meat with dairy in the same recipe)");
+  if (!rules.length) return "The child eats everything, so any child-friendly ingredients are fine.";
+  return `STRICTLY respect what the child eats. Every ingredient must be: ${rules.join("; ")}.`;
+}
+
+function clientInventPrompt(childName, diet) {
+  return `You are "Chef Sparkle", the warm, playful chef on a kids' cooking show, and a brilliant recipe writer.
+A child around 9 years old named ${childName} will tell you a dish they dream of making. Invent one complete recipe they can really make at home. Rules you must always follow:
+- Use British English spelling and simple words a 9-year-old understands. Be warm and playful, never babyish.
+- Write between 5 and 10 steps. Each step is one clear thing to do.
+- Set "safety" to true on ANY step that uses the oven, the hob, boiling water, a knife, a blender, the microwave or raw meat - and phrase that step "Ask a grown-up to..." so the child fetches help first.
+- Set "timer" to the whole number of minutes ONLY when the step is a real wait (baking, chilling, freezing, resting) and make it match the minutes written in the step text. Use 0 when there is no waiting.
+- ${clientDietRulesText(diet)}
+- "science" must be EXACTLY 2 true, wow-worthy kitchen science facts about this dish - the kind that make a 9-year-old say "no way!".
+- "quiz" must be EXACTLY 3 fun quiz questions about the dish or its science. Each has 4 options, and "answer" is the index (0, 1, 2 or 3) of the option that is genuinely correct.
+- "emoji" is one single emoji that suits the dish. "category" must be exactly one of: "Bakes & Cakes", "Cold Drinks", "Quick Snacks", "Family Meals", "Breakfast".
+- "time" is the friendly total time like "30 min". "serves" says how much it makes, like "2 glasses" or "8 biscuits".
+- If the request is not food, or would not be safe for a child to help cook, never refuse harshly: cheerfully invent the closest fun, safe food idea instead (a "volcano" becomes an erupting volcano cake, a "potion" becomes a fizzy fruit potion drink).`;
+}
+
+// Kind stand-ins used only when the AI sends back too few facts or questions.
+const CLIENT_FILLER_SCIENCE = [
+  "Tasting is teamwork: your tongue and your nose work together, which is why food tastes dull when your nose is blocked!",
+  "Cooking is really science you can eat - heat makes the tiny molecules in food jiggle faster and change into new tastes and textures.",
+];
+const CLIENT_FILLER_QUIZ = [
+  { q: "What should every chef do before they start cooking?", options: ["Do a cartwheel", "Wash their hands", "Shout really loudly", "Hide all the spoons"], answer: 1 },
+  { q: "Who should help when a step uses the oven or a sharp knife?", options: ["The family cat", "A teddy bear", "A grown-up", "Nobody at all"], answer: 2 },
+  { q: "What makes a dish taste extra special?", options: ["Leaving it on the floor", "Making it with someone you love", "Forgetting about it", "Never tasting it"], answer: 1 },
+];
+
+/* Structured outputs can't enforce min/max, so every limit is clamped here too. */
+function clientClampRecipe(raw) {
+  const cleanStr = (v, fallback) => String(v == null ? "" : v).trim() || fallback;
+  const emoji = String(raw.emoji == null ? "" : raw.emoji).trim();
+  const ingredients = (Array.isArray(raw.ingredients) ? raw.ingredients : [])
+    .map((i) => String(i == null ? "" : i).trim())
+    .filter(Boolean)
+    .slice(0, 30);
+  if (!ingredients.length) ingredients.push("A sprinkle of imagination (ask a grown-up what's in the cupboard!)");
+  const steps = (Array.isArray(raw.steps) ? raw.steps : [])
+    .filter((s) => s && String(s.text == null ? "" : s.text).trim())
+    .slice(0, 12)
+    .map((s) => ({
+      text: String(s.text).trim(),
+      safety: s.safety === true,
+      timer: Math.min(180, Math.max(0, Math.round(Number(s.timer)) || 0)),
+    }));
+  if (!steps.length) steps.push({ text: "Mix everything together, then taste and adjust like a proper chef!", safety: false, timer: 0 });
+  const science = (Array.isArray(raw.science) ? raw.science : [])
+    .map((f) => String(f == null ? "" : f).trim())
+    .filter(Boolean)
+    .slice(0, 2);
+  while (science.length < 2) science.push(CLIENT_FILLER_SCIENCE[science.length]);
+  const quiz = (Array.isArray(raw.quiz) ? raw.quiz : [])
+    .filter((q) => q && String(q.q == null ? "" : q.q).trim() && Array.isArray(q.options) && q.options.length >= 4)
+    .slice(0, 3)
+    .map((q) => ({
+      q: String(q.q).trim(),
+      options: q.options.slice(0, 4).map((o) => String(o == null ? "" : o).trim() || "Hmm..."),
+      answer: Math.min(3, Math.max(0, Math.round(Number(q.answer)) || 0)),
+    }));
+  while (quiz.length < 3) quiz.push(CLIENT_FILLER_QUIZ[quiz.length]);
+  return {
+    title: cleanStr(raw.title, "A Chef Sparkle surprise"),
+    emoji: !emoji || emoji.length > 12 || /[<>&"']/.test(emoji) ? "🍽️" : emoji,
+    category: CLIENT_RECIPE_CATEGORIES.includes(raw.category) ? raw.category : "Quick Snacks",
+    time: cleanStr(raw.time, "30 min"),
+    serves: cleanStr(raw.serves, "a chef-sized amount"),
+    ingredients,
+    steps,
+    science,
+    quiz,
+  };
+}
+
+async function claudeBrowserInvent(query, childName, diet, key, signal) {
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    signal,
+    headers: {
+      "content-type": "application/json",
+      "x-api-key": key,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+    },
+    body: JSON.stringify({
+      model: "claude-opus-4-8",
+      max_tokens: 4096,
+      system: clientInventPrompt(childName, diet),
+      output_config: { format: { type: "json_schema", schema: CLIENT_RECIPE_SCHEMA } },
+      messages: [
+        { role: "user", content: `${childName} dreams of making: "${query}". Please invent the recipe!` },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`Claude API error ${res.status}`);
+  const data = await res.json();
+  const textBlock = (data.content || []).find((b) => b.type === "text");
+  return JSON.parse(textBlock.text);
+}
+
+async function openaiBrowserInvent(query, childName, diet, key, signal) {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    signal,
+    headers: { "content-type": "application/json", Authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      max_tokens: 4096,
+      response_format: { type: "json_object" },
+      messages: [
+        { role: "system", content: clientInventPrompt(childName, diet) + CLIENT_RECIPE_SHAPE_NOTE },
+        { role: "user", content: `${childName} dreams of making: "${query}". Please invent the recipe!` },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`OpenAI API error ${res.status}`);
+  const data = await res.json();
+  return JSON.parse(data.choices[0].message.content);
+}
+
+/* Main invent entry point used by app.js. Throws an Error with .code = "no-key"
+   when no AI is available, so the UI can route to the Grown-ups' corner message. */
+async function getInventedRecipe(query, childName, diet, signal) {
+  if (!window.RK_STANDALONE) {
+    const res = await fetch("/api/invent", {
+      method: "POST",
+      signal,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query, childName, diet }),
+    });
+    if (res.status === 503) {
+      const err = new Error("no AI key is set up on the server");
+      err.code = "no-key";
+      throw err;
+    }
+    if (!res.ok) throw new Error("invent request failed");
+    return clientClampRecipe(await res.json());
+  }
+
+  const key = grownUpKey();
+  if (!key) {
+    const err = new Error("no grown-up key saved on this device");
+    err.code = "no-key";
+    throw err;
+  }
+  const raw =
+    grownUpKeyKind(key) === "claude"
+      ? await claudeBrowserInvent(query, childName, diet, key, signal)
+      : await openaiBrowserInvent(query, childName, diet, key, signal);
+  return clientClampRecipe(raw);
+}
+
 /* Quick key test used by the Grown-ups' corner (tiny, near-free request) */
 async function testGrownUpKey(key) {
   const kind = grownUpKeyKind(key);
@@ -1116,6 +1666,7 @@ const BADGES = [
   { id: "drink-master", emoji: "🥤", name: "Drink Master", desc: "Make 2 cold drinks", check: (s) => s.completed.filter((id) => (allRecipes().find((r) => r.id === id) || {}).category === "Cold Drinks").length >= 2 },
   { id: "rising-star", emoji: "⭐", name: "Rising Star", desc: "Reach Junior Baker rank", check: (s) => s.xp >= 150 },
   { id: "recipe-inventor", emoji: "🧪", name: "Recipe Inventor", desc: "Create your very own recipe", check: (s) => s.myRecipes.length >= 1 },
+  { id: "dream-chef", emoji: "🪄", name: "Dream Chef", desc: "Invent a recipe with Chef Sparkle", check: (s) => s.myRecipes.some((r) => r.invented) },
 ];
 
 const STICKERS = ["🦄", "🌈", "🏆", "🎉", "🍓", "⭐", "🧁", "🐝", "🎀", "🚀", "🍭", "💖"];
@@ -1377,12 +1928,19 @@ function renderRecipeGrid() {
       return q.split(/\s+/).every((word) => haystack.includes(word));
     });
 
-  // Always show the "make your own" card, whatever the search or filters say.
+  // Always show the "make your own" and "invent with Chef Sparkle" cards,
+  // whatever the search or filters say.
   const builderCard = `
       <button class="recipe-card builder-cta" id="new-recipe-card">
         <span class="big-emoji">➕</span>
         <h3>My recipe</h3>
         <div class="meta">Invent your very own recipe!</div>
+      </button>`;
+  const inventCard = `
+      <button class="recipe-card invent-cta" id="invent-card">
+        <span class="big-emoji">🪄</span>
+        <h3>Invent with Chef Sparkle</h3>
+        <div class="meta">Type any dish - Chef Sparkle writes the recipe!</div>
       </button>`;
 
   if (!results.length) {
@@ -1392,8 +1950,9 @@ function renderRecipeGrid() {
     grid.innerHTML = `<div class="empty-state card" style="grid-column:1/-1">
         <span class="big-emoji">🕵️</span>${reason}
         <br/><br/>
+        ${q ? `<button class="btn btn-primary" id="empty-invent">🪄 Ask Chef Sparkle for a '${esc(searchQuery.trim())}' recipe!</button><br/><br/>` : ""}
         <button class="btn btn-secondary" id="empty-settings">⚙️ Change what I eat</button>
-      </div>` + builderCard;
+      </div>` + builderCard + inventCard;
   } else {
     grid.innerHTML = results
       .map((r) => {
@@ -1401,20 +1960,23 @@ function renderRecipeGrid() {
         const done = state.completed.includes(r.id);
         return `
       <button class="recipe-card" data-id="${r.id}">
-        <span class="big-emoji">${r.emoji}</span>
+        <span class="big-emoji">${esc(r.emoji)}</span>
         <h3>${esc(r.title)}</h3>
-        ${r.custom ? `<div class="my-pill">✨ My recipe</div>` : ""}
-        <div class="meta">⏱ ${r.time} · ${r.difficulty}</div>
+        ${r.custom ? (r.invented ? `<div class="ai-pill">🪄 Chef Sparkle</div>` : `<div class="my-pill">✨ My recipe</div>`) : ""}
+        <div class="meta">⏱ ${esc(r.time)} · ${esc(r.difficulty)}</div>
         ${stars ? `<div class="stars-mini">${"⭐".repeat(stars)}</div>` : done ? `<div class="done-tick">✔ Made it!</div>` : ""}
       </button>`;
       })
-      .join("") + builderCard;
+      .join("") + builderCard + inventCard;
   }
 
   grid.querySelectorAll(".recipe-card[data-id]").forEach((card) =>
     card.addEventListener("click", () => renderRecipe(card.dataset.id))
   );
   document.getElementById("new-recipe-card").addEventListener("click", renderRecipeBuilder);
+  document.getElementById("invent-card").addEventListener("click", () => renderInvent(searchQuery.trim()));
+  const emptyInvent = document.getElementById("empty-invent");
+  if (emptyInvent) emptyInvent.addEventListener("click", () => renderInvent(searchQuery.trim()));
   const emptySettings = document.getElementById("empty-settings");
   if (emptySettings) emptySettings.addEventListener("click", renderOnboarding);
 }
@@ -1579,6 +2141,127 @@ function renderRecipeBuilder() {
   renderStepList();
 }
 
+/* ---------- Chef Sparkle invents a recipe ---------- */
+function renderInvent(prefillQuery) {
+  setNav("home");
+  show(`
+    <button class="btn btn-ghost" id="back-btn">⬅ Back to recipes</button>
+    <div class="card builder">
+      <h1>Invent with Chef Sparkle! 🪄</h1>
+      <p class="sub">Dream up any dish and Chef Sparkle will write a real recipe just for you.</p>
+      <h2>What shall we invent?</h2>
+      <input type="text" id="invent-input" placeholder="e.g. rainbow unicorn biscuits" maxlength="80" value="${esc(prefillQuery || "")}" />
+      <p class="sub">Chef Sparkle will match it to what you eat!</p>
+      <button class="btn btn-primary btn-big" id="invent-go">Invent it! 🪄</button>
+    </div>
+  `);
+  document.getElementById("back-btn").addEventListener("click", renderHome);
+  const input = document.getElementById("invent-input");
+  const goBtn = document.getElementById("invent-go");
+  goBtn.addEventListener("click", () => submitInvent(input.value, goBtn));
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") submitInvent(input.value, goBtn);
+  });
+}
+
+async function submitInvent(rawQuery, goBtn) {
+  const query = rawQuery.trim();
+  if (query.length < 2) {
+    toast("Tell Chef Sparkle what to invent first! ✍️");
+    return;
+  }
+  if (goBtn) goBtn.disabled = true; // no double-taps while the magic happens
+
+  show(`
+    <div class="card finish">
+      <span class="spinner">🪄</span>
+      <h2>Chef Sparkle is scribbling in the magic recipe book...</h2>
+      <p class="sub">Inventing something delicious just for you, ${esc(state.name)}!</p>
+      <button class="btn btn-ghost" id="invent-escape">Taking too long? Go back ⬅</button>
+    </div>
+  `);
+
+  // Never leave her on the spinner: a 60s timeout drops into the kind
+  // try-again card, and "Go back" really goes back (no scary error card).
+  const controller = new AbortController();
+  let escaped = false;
+  const timeout = setTimeout(() => controller.abort(), 60000);
+  document.getElementById("invent-escape").addEventListener("click", () => {
+    escaped = true;
+    controller.abort();
+  });
+
+  try {
+    const invented = await getInventedRecipe(query, state.name, state.diet.filter((d) => d !== "everything"), controller.signal);
+    clearTimeout(timeout);
+    const recipe = {
+      id: "ai-" + Date.now(),
+      title: invented.title,
+      emoji: invented.emoji,
+      category: invented.category,
+      time: invented.time,
+      difficulty: "Chef Sparkle",
+      serves: invented.serves,
+      diet: { veggie: true, vegan: true, halal: true, kosher: true },
+      custom: true,
+      invented: true,
+      ingredients: invented.ingredients,
+      steps: invented.steps.map((s) => {
+        const step = { text: s.text };
+        if (s.safety) step.safety = true;
+        if (s.timer) step.timer = s.timer;
+        return step;
+      }),
+      science: invented.science,
+      quiz: invented.quiz,
+    };
+    state.myRecipes.push(recipe);
+    saveState();
+    awardXP(20, "for dreaming up a recipe with Chef Sparkle! 🪄");
+    renderRecipe(recipe.id);
+  } catch (err) {
+    clearTimeout(timeout);
+    if (escaped) renderInvent(query); // she chose to go back - no error card
+    else if (err && err.code === "no-key") renderInventNoKey();
+    else renderInventError(query);
+  }
+}
+
+function renderInventNoKey() {
+  setNav("home");
+  // The Grown-ups' corner only exists on the tablet edition; in server mode
+  // the key lives in the .env file on the computer, so point grown-ups there.
+  const standalone = !!window.RK_STANDALONE;
+  show(`
+    <div class="card finish">
+      <span class="big-emoji" style="font-size:3.4rem">🔑</span>
+      <h2>Chef Sparkle needs the magic key first!</h2>
+      <p class="sub">${standalone ? "Ask a grown-up to add it in My Badges → Grown-ups' corner." : "Ask a grown-up to switch on the magic key on the computer that runs the app."}</p>
+      ${standalone ? `<button class="btn btn-primary btn-big" id="to-grown-ups">Open the Grown-ups' corner 🔑</button><br/><br/>` : ""}
+      <button class="btn btn-ghost" id="invent-home">⬅ Back to recipes</button>
+    </div>
+  `);
+  const toGrownUps = document.getElementById("to-grown-ups");
+  if (toGrownUps) toGrownUps.addEventListener("click", renderGrownUps);
+  document.getElementById("invent-home").addEventListener("click", renderHome);
+}
+
+function renderInventError(query) {
+  setNav("home");
+  show(`
+    <div class="card finish">
+      <span class="big-emoji" style="font-size:3.4rem">🫧</span>
+      <h2>The magic fizzled - shall we try again?</h2>
+      <p class="sub">These things happen, even in the best kitchens. Your idea is safe!</p>
+      <button class="btn btn-primary btn-big" id="invent-retry">Try again 🪄</button>
+      <br/><br/>
+      <button class="btn btn-ghost" id="invent-home">⬅ Back to recipes</button>
+    </div>
+  `);
+  document.getElementById("invent-retry").addEventListener("click", () => renderInvent(query));
+  document.getElementById("invent-home").addEventListener("click", renderHome);
+}
+
 /* ---------- Recipe detail ---------- */
 function renderRecipe(id) {
   const r = allRecipes().find((x) => x.id === id);
@@ -1597,15 +2280,15 @@ function renderRecipe(id) {
     <button class="btn btn-ghost" id="back-btn">⬅ Back to recipes</button>
     <div class="card">
       <div class="detail-head">
-        <span class="big-emoji">${r.emoji}</span>
+        <span class="big-emoji">${esc(r.emoji)}</span>
         <div>
           <h1>${esc(r.title)}</h1>
-          <div class="meta">⏱ ${r.time} · ${r.difficulty} · Makes ${esc(r.serves)}</div>
+          <div class="meta">⏱ ${esc(r.time)} · ${esc(r.difficulty)} · Makes ${esc(r.serves)}</div>
         </div>
       </div>
       <div class="pill-row">
         <span class="pill">${esc(r.category)}</span>
-        ${r.custom ? `<span class="my-pill">✨ My recipe</span>` : ""}
+        ${r.custom ? (r.invented ? `<span class="ai-pill">🪄 Chef Sparkle</span>` : `<span class="my-pill">✨ My recipe</span>`) : ""}
         ${dietPills.map((p) => `<span class="pill diet">${p}</span>`).join("")}
       </div>
       <h2>You will need</h2>
@@ -1860,7 +2543,7 @@ function renderFinish() {
   show(`
     <div class="card finish">
       <div class="confetti">🎉✨🎊</div>
-      <h1>You made ${esc(recipe.title)}! ${recipe.emoji}</h1>
+      <h1>You made ${esc(recipe.title)}! ${esc(recipe.emoji)}</h1>
       <p class="sub">You earned a surprise sticker...</p>
       <div class="sticker-reveal">${sticker}</div>
       <p class="sub">It's saved in your cookbook! Now take a photo so Chef Sparkle can review it.</p>
@@ -2019,9 +2702,9 @@ function renderCookbook() {
         .map(
           (en, i) => `
         <button class="card book-entry" data-i="${i}">
-          ${en.photo ? `<img src="${en.photo}" alt="${esc(en.title)}" />` : `<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;background:#fff1e0">${en.emoji}</div>`}
+          ${en.photo ? `<img src="${en.photo}" alt="${esc(en.title)}" />` : `<div style="height:160px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;background:#fff1e0">${esc(en.emoji)}</div>`}
           <div class="body">
-            <h3>${en.emoji} ${esc(en.title)}</h3>
+            <h3>${esc(en.emoji)} ${esc(en.title)}</h3>
             <div class="date">${esc(en.date)}</div>
             ${en.review ? `<div class="stars-mini">${"⭐".repeat(en.review.stars)}</div>` : ""}
           </div>
@@ -2046,9 +2729,9 @@ function renderBookEntry(i) {
   show(`
     <button class="btn btn-ghost" id="back-btn">⬅ Back to my cookbook</button>
     <div class="card finish">
-      <h1>${en.emoji} ${esc(en.title)}</h1>
+      <h1>${esc(en.emoji)} ${esc(en.title)}</h1>
       <p class="sub">Made on ${esc(en.date)}</p>
-      ${en.photo ? `<img src="${en.photo}" class="photo-preview" alt="${esc(en.title)}" />` : `<div style="font-size:5rem;margin:16px 0">${en.emoji}</div>`}
+      ${en.photo ? `<img src="${en.photo}" class="photo-preview" alt="${esc(en.title)}" />` : `<div style="font-size:5rem;margin:16px 0">${esc(en.emoji)}</div>`}
       ${
         en.review
           ? `
